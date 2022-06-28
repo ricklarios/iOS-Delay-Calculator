@@ -31,7 +31,7 @@ final class HomeViewController: UIViewController {
 	@IBOutlet weak var operatorAC: UIButton!
 	@IBOutlet weak var operatorPlusMinus: UIButton!
 	@IBOutlet weak var operatorConvert: UIButton!
-		
+	
 	@IBOutlet weak var operatorDivision: UIButton!
 	@IBOutlet weak var operatorMultiplication: UIButton!
 	@IBOutlet weak var operatorSubstraction: UIButton!
@@ -168,17 +168,21 @@ final class HomeViewController: UIViewController {
 		
 		sender.shine()
 	}
-//	@IBAction func operatorPercentAction(_ sender: UIButton) {
-//
-//		if operation != .percent {
-//			result()
-//		}
-//		operating = true
-//		operation = .percent
-//		result()
-//
-//		sender.shine()
-//	}
+	
+	@IBAction func operatorConvertAction(_ sender: UIButton) {
+		
+		if operation != .convert {
+			result()
+			}
+			operating = true
+			operation = .convert
+			result()
+		
+			sender.shine()
+	}
+	
+	
+	
 	@IBAction func operatorDivisionAction(_ sender: UIButton) {
 		
 		if operation != .none {
@@ -295,6 +299,8 @@ final class HomeViewController: UIViewController {
 	
 	private func result() {
 		
+		let speedOfSound = SpeedOfSound(20)
+		
 		switch operation {
 		
 		case .none:
@@ -313,8 +319,8 @@ final class HomeViewController: UIViewController {
 			total = total / temp
 			break
 		case .convert:
+			total = temp * speedOfSound
 			
-			total = temp
 			break
 		}
 		

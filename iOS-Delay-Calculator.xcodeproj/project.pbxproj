@@ -11,6 +11,7 @@
 		606926F0286902DB00016EA2 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606926EE286902DB00016EA2 /* HomeViewController.xib */; };
 		606926F22869178C00016EA2 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926F12869178C00016EA2 /* UIButtonExtension.swift */; };
 		60B5AB06286B7B9300988E1A /* SpeedOfSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5AB05286B7B9300988E1A /* SpeedOfSound.swift */; };
+		60B5AB08286B813F00988E1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60B5AB0A286B813F00988E1A /* Info.plist */; };
 		60FD8DAD285D441000B652C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FD8DAC285D441000B652C8 /* AppDelegate.swift */; };
 		60FD8DB6285D441600B652C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60FD8DB5285D441600B652C8 /* Assets.xcassets */; };
 		60FD8DB9285D441600B652C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60FD8DB7285D441600B652C8 /* LaunchScreen.storyboard */; };
@@ -41,11 +42,11 @@
 		606926EE286902DB00016EA2 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		606926F12869178C00016EA2 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		60B5AB05286B7B9300988E1A /* SpeedOfSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedOfSound.swift; sourceTree = "<group>"; };
+		60B5AB09286B813F00988E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		60FD8DA9285D441000B652C8 /* iOS-Delay-Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Delay-Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60FD8DAC285D441000B652C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60FD8DB5285D441600B652C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60FD8DB8285D441600B652C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		60FD8DBA285D441600B652C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60FD8DBF285D441600B652C8 /* iOS-Delay-CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Delay-CalculatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60FD8DC3285D441700B652C8 /* iOS_CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_CalculatorTests.swift; sourceTree = "<group>"; };
 		60FD8DC9285D441700B652C8 /* iOS-Delay-CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-Delay-CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,7 +190,7 @@
 		60FD8DDC285D44BF00B652C8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				60FD8DBA285D441600B652C8 /* Info.plist */,
+				60B5AB0A286B813F00988E1A /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -298,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B5AB08286B813F00988E1A /* Info.plist in Resources */,
 				60FD8DB9285D441600B652C8 /* LaunchScreen.storyboard in Resources */,
 				60FD8DB6285D441600B652C8 /* Assets.xcassets in Resources */,
 				606926F0286902DB00016EA2 /* HomeViewController.xib in Resources */,
@@ -365,6 +367,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		60B5AB0A286B813F00988E1A /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60B5AB09286B813F00988E1A /* Base */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
 		60FD8DB7285D441600B652C8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -501,7 +511,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T34CA4GZAM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS-Calculator/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "iOS-Delay-Calculator/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Delay Calculator";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -514,7 +524,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.devlarios.iOS-Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.devlarios.iOS-Delay-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -531,7 +541,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T34CA4GZAM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS-Calculator/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "iOS-Delay-Calculator/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Delay Calculator";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -544,7 +554,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.devlarios.iOS-Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.devlarios.iOS-Delay-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

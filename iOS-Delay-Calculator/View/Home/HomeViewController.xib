@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="iOS_Calculator" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="iOS_Delay_Calculator" customModuleProvider="target">
             <connections>
                 <outlet property="number0" destination="ULt-gl-uWo" id="uLa-H0-2xH"/>
                 <outlet property="number1" destination="WiO-9I-2S3" id="yqy-0L-X4v"/>
@@ -24,9 +24,9 @@
                 <outlet property="numberDecimal" destination="apK-3L-gIu" id="Nbx-yI-rHf"/>
                 <outlet property="operatorAC" destination="SBb-f5-Dcu" id="Zaf-ci-DOT"/>
                 <outlet property="operatorAddition" destination="JXL-Tm-pmp" id="J8v-ek-iZb"/>
+                <outlet property="operatorConvert" destination="vhr-WJ-QnP" id="VPG-OD-ofT"/>
                 <outlet property="operatorDivision" destination="jfX-hx-pbc" id="Znd-VN-y6Q"/>
                 <outlet property="operatorMultiplication" destination="Dzn-B8-WdH" id="GQp-8H-Zuc"/>
-                <outlet property="operatorPercent" destination="vhr-WJ-QnP" id="ygj-iy-lDH"/>
                 <outlet property="operatorPlusMinus" destination="dTD-kx-MxD" id="V4M-Ge-wcO"/>
                 <outlet property="operatorResult" destination="6kg-Oe-LcE" id="L7d-72-di9"/>
                 <outlet property="operatorSubstraction" destination="NOn-LQ-U1T" id="0At-gP-Yfy"/>
@@ -82,12 +82,12 @@
                                         <constraint firstAttribute="width" secondItem="vhr-WJ-QnP" secondAttribute="height" multiplier="1:1" id="Sef-zK-Dqf"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="%">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="35"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="m⇔s">
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="23"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="operatorPercentAction:" destination="-1" eventType="touchUpInside" id="weu-JW-zq5"/>
+                                        <action selector="operatorConvertAction:" destination="-1" eventType="touchUpInside" id="J1E-DX-J5F"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfX-hx-pbc">
