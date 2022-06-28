@@ -34,5 +34,4 @@ extension UIButton {
 			setTitleColor(selected ? orange : .white, for: .normal)
 		}
 		
-	
 }
