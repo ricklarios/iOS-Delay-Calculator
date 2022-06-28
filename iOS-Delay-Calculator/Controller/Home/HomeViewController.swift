@@ -30,7 +30,7 @@ final class HomeViewController: UIViewController {
 	// Operators
 	@IBOutlet weak var operatorAC: UIButton!
 	@IBOutlet weak var operatorPlusMinus: UIButton!
-	@IBOutlet weak var operatorPercent: UIButton!
+	@IBOutlet weak var operatorConvert: UIButton!
 		
 	@IBOutlet weak var operatorDivision: UIButton!
 	@IBOutlet weak var operatorMultiplication: UIButton!
@@ -55,7 +55,7 @@ final class HomeViewController: UIViewController {
 	// private let kMinValue: Double = 0.00000001
 	
 	private enum OperationType {
-		case none, addition, substraction, multiplication, division, percent
+		case none, addition, substraction, multiplication, division, convert
 	}
 	
 	// Formateo de valores auxiliares
@@ -144,7 +144,7 @@ final class HomeViewController: UIViewController {
 		
 		operatorAC.round()
 		operatorPlusMinus.round()
-		operatorPercent.round()
+		operatorConvert.round()
 		operatorDivision.round()
 		operatorMultiplication.round()
 		operatorSubstraction.round()
@@ -168,17 +168,17 @@ final class HomeViewController: UIViewController {
 		
 		sender.shine()
 	}
-	@IBAction func operatorPercentAction(_ sender: UIButton) {
-		
-		if operation != .percent {
-			result()
-		}
-		operating = true
-		operation = .percent
-		result()
-		
-		sender.shine()
-	}
+//	@IBAction func operatorPercentAction(_ sender: UIButton) {
+//
+//		if operation != .percent {
+//			result()
+//		}
+//		operating = true
+//		operation = .percent
+//		result()
+//
+//		sender.shine()
+//	}
 	@IBAction func operatorDivisionAction(_ sender: UIButton) {
 		
 		if operation != .none {
@@ -312,8 +312,8 @@ final class HomeViewController: UIViewController {
 		case .division:
 			total = total / temp
 			break
-		case .percent:
-			temp = temp / 100
+		case .convert:
+			
 			total = temp
 			break
 		}
@@ -348,7 +348,7 @@ final class HomeViewController: UIViewController {
 			operatorDivision.selectOperation(false)
 		} else {
 			switch operation {
-			case .none, .percent:
+			case .none, .convert:
 				operatorAddition.selectOperation(false)
 				operatorSubstraction.selectOperation(false)
 				operatorMultiplication.selectOperation(false)
