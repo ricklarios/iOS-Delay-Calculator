@@ -31,6 +31,7 @@
                 <outlet property="operatorResult" destination="6kg-Oe-LcE" id="L7d-72-di9"/>
                 <outlet property="operatorSubstraction" destination="NOn-LQ-U1T" id="0At-gP-Yfy"/>
                 <outlet property="resultLabel" destination="gj8-FE-ie7" id="ca7-ox-SI6"/>
+                <outlet property="unitLabel" destination="QTH-SK-N2Z" id="Ufq-xc-JRK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -393,6 +394,15 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m/s units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTH-SK-N2Z">
+                    <rect key="frame" x="325" y="208" width="69" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="CNC-Vc-OMZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -401,12 +411,14 @@
                 <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="gj8-FE-ie7" secondAttribute="bottom" constant="30" id="G6h-E1-lR6"/>
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="R0x-lC-451"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HNx-68-2hI" secondAttribute="bottom" constant="18" id="XZT-SG-xdO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QTH-SK-N2Z" secondAttribute="trailing" constant="20" id="ZFR-WC-U8g"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gj8-FE-ie7" secondAttribute="trailing" constant="20" id="a7f-iv-NpR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HNx-68-2hI" secondAttribute="trailing" priority="900" constant="18" id="bbi-Xt-cX4"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eG9-Va-vqU"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" priority="900" constant="18" id="ipw-zb-MjM"/>
+                <constraint firstItem="gj8-FE-ie7" firstAttribute="top" secondItem="QTH-SK-N2Z" secondAttribute="bottom" constant="20" id="u5x-xG-IvK"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="131"/>
+            <point key="canvasLocation" x="168" y="131"/>
         </view>
     </objects>
     <resources>

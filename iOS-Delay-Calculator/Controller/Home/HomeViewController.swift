@@ -13,7 +13,8 @@ final class HomeViewController: UIViewController {
 	
 	// Result Label
 	@IBOutlet weak var resultLabel: UILabel!
-	
+	// Measurement Unit Label
+	@IBOutlet weak var unitLabel: UILabel!
 	
 	// Numbers buttons
 	@IBOutlet weak var number0: UIButton!
@@ -46,6 +47,8 @@ final class HomeViewController: UIViewController {
 	private var decimal = false 		// Indica si el valor es decimal
 	private var operation: OperationType = .none
 	
+	private var mainUnit: MainUnitType = .meters
+	
 	// MARK: - Constantes
 	
 	private let kDecimalSeparator = Locale.current.decimalSeparator!
@@ -56,6 +59,10 @@ final class HomeViewController: UIViewController {
 	
 	private enum OperationType {
 		case none, addition, substraction, multiplication, division, convert
+	}
+	
+	private enum MainUnitType {
+		case meters, seconds
 	}
 	
 	// Formateo de valores auxiliares
