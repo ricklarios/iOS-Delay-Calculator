@@ -7,7 +7,7 @@
 
 import Foundation
 
-func SpeedOfSound (_ temp: Double) -> Double  {
+public func SpeedOfSound (_ temp: Double) -> Double  {
 	
 	let temp: Double = temp
 	let speedOfSound = 331.4 + (0.61*temp)

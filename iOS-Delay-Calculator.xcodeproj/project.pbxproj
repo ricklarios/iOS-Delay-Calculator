@@ -12,6 +12,7 @@
 		606926F22869178C00016EA2 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926F12869178C00016EA2 /* UIButtonExtension.swift */; };
 		60B5AB06286B7B9300988E1A /* SpeedOfSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5AB05286B7B9300988E1A /* SpeedOfSound.swift */; };
 		60B5AB08286B813F00988E1A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60B5AB0A286B813F00988E1A /* Info.plist */; };
+		60B5AB0D286BCDF700988E1A /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5AB0C286BCDF700988E1A /* Formatters.swift */; };
 		60FD8DAD285D441000B652C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FD8DAC285D441000B652C8 /* AppDelegate.swift */; };
 		60FD8DB6285D441600B652C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60FD8DB5285D441600B652C8 /* Assets.xcassets */; };
 		60FD8DB9285D441600B652C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60FD8DB7285D441600B652C8 /* LaunchScreen.storyboard */; };
@@ -43,6 +44,7 @@
 		606926F12869178C00016EA2 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		60B5AB05286B7B9300988E1A /* SpeedOfSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedOfSound.swift; sourceTree = "<group>"; };
 		60B5AB09286B813F00988E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		60B5AB0C286BCDF700988E1A /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		60FD8DA9285D441000B652C8 /* iOS-Delay-Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-Delay-Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60FD8DAC285D441000B652C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60FD8DB5285D441600B652C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				606926F12869178C00016EA2 /* UIButtonExtension.swift */,
 				60B5AB05286B7B9300988E1A /* SpeedOfSound.swift */,
+				60B5AB0C286BCDF700988E1A /* Formatters.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				60B5AB06286B7B9300988E1A /* SpeedOfSound.swift in Sources */,
 				60FD8DAD285D441000B652C8 /* AppDelegate.swift in Sources */,
 				606926EF286902DB00016EA2 /* HomeViewController.swift in Sources */,
+				60B5AB0D286BCDF700988E1A /* Formatters.swift in Sources */,
 				606926F22869178C00016EA2 /* UIButtonExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

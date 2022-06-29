@@ -58,61 +58,20 @@ final class HomeViewController: UIViewController {
 	// private let kMinValue: Double = 0.00000001
 	
 	private enum OperationType {
-		case none, addition, substraction, multiplication, division, convert
+		case none, addition, substraction, multiplication, division
 	}
 	
-	private enum MainUnitType {
-		case meters, seconds
+	private enum MainUnitType: String {
+		case meters = "meters", seconds = "seconds"
 	}
 	
-	// Formateo de valores auxiliares
-		private let auxFormatter: NumberFormatter = {
-			let formatter = NumberFormatter()
-			let locale = Locale.current
-			formatter.groupingSeparator = ""
-			formatter.decimalSeparator = locale.decimalSeparator
-			formatter.numberStyle = .decimal
-			formatter.maximumIntegerDigits = 100
-			formatter.minimumFractionDigits = 0
-			formatter.maximumFractionDigits = 100
-			return formatter
-		}()
-	// Formateo de valores auxiliares totales
-		private let auxTotalFormatter: NumberFormatter = {
-			let formatter = NumberFormatter()
-			formatter.groupingSeparator = ""
-			formatter.decimalSeparator = ""
-			formatter.numberStyle = .decimal
-			formatter.maximumIntegerDigits = 100
-			formatter.minimumFractionDigits = 0
-			formatter.maximumFractionDigits = 100
-			return formatter
-		}()
-	// Formateo de valores por pantalla por defecto
-		private let printFormatter: NumberFormatter = {
-			let formatter = NumberFormatter()
-			let locale = Locale.current
-			formatter.groupingSeparator = locale.groupingSeparator
-			formatter.decimalSeparator = locale.decimalSeparator
-			formatter.numberStyle = .decimal
-			formatter.maximumIntegerDigits = 9
-			formatter.minimumFractionDigits = 0
-			formatter.maximumFractionDigits = 8
-			return formatter
-		}()
-	// Formateo de valores por pantalla en formato científico
-		private let printScientificFormatter: NumberFormatter = {
-			let formatter = NumberFormatter()
-			formatter.numberStyle = .scientific
-			formatter.maximumFractionDigits = 3
-			formatter.exponentSymbol = "e"
-			return formatter
-		}()
+
 	
-	// MARK: Initialization
+	// MARK: - Initialization
 	
 	init() {
 		super.init(nibName: nil, bundle: nil)
+		
 	}
 	
 	required init?(coder: NSCoder) {
@@ -158,6 +117,8 @@ final class HomeViewController: UIViewController {
 		operatorAddition.round()
 		operatorResult.round()
 		
+		unitLabel.text = mainUnit.rawValue
+		
 	}
 
 	// MARK: - Button Actions
@@ -178,22 +139,37 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
-		if operation != .convert {
-			result()
-			}
-			operating = true
-			operation = .convert
-			result()
+		let speedOfSound = SpeedOfSound(20)
+		total = total == 0 ? temp : total
+//		operating = true
+//		operation = .convert
+		switch mainUnit {
+		case .meters:
+			total = total / speedOfSound
+			break
+		case .seconds:
+			total = total * speedOfSound
+			break
+		}
 		
-			sender.shine()
+		
+		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
+		
+		switchMainUnit()
+		unitLabel.text = mainUnit.rawValue
+		
+		sender.shine()
 	}
 	
 	
 	
 	@IBAction func operatorDivisionAction(_ sender: UIButton) {
 		
-		if operation != .none {
+		if operation != .none, operation != .division {
 			result()
+		} else if operation != .none, operation == .division {
+			sender.shine()
+			return
 		}
 				
 		operating = true
@@ -204,8 +180,11 @@ final class HomeViewController: UIViewController {
 	}
 	@IBAction func operatorMultiplicationAction(_ sender: UIButton) {
 		
-		if operation != .none {
+		if operation != .none, operation != .multiplication {
 			result()
+		} else if operation != .none, operation == .multiplication {
+			sender.shine()
+			return
 		}
 		operating = true
 		operation = .multiplication
@@ -215,8 +194,11 @@ final class HomeViewController: UIViewController {
 	}
 	@IBAction func operatorSubstractionAction(_ sender: UIButton) {
 		
-		if operation != .none {
+		if operation != .none, operation != .substraction {
 			result()
+		} else if operation != .none, operation == .substraction {
+			sender.shine()
+			return
 		}
 		operating = true
 		operation = .substraction
@@ -226,8 +208,11 @@ final class HomeViewController: UIViewController {
 	}
 	@IBAction func operatorAdditionAction(_ sender: UIButton) {
 		
-		if operation != .none {
+		if operation != .none, operation != .addition {
 			result()
+		} else if operation != .none, operation == .addition {
+			sender.shine()
+			return
 		}
 		operating = true
 		operation = .addition
@@ -237,7 +222,15 @@ final class HomeViewController: UIViewController {
 	}
 	@IBAction func operatorResultAction(_ sender: UIButton) {
 		
-		result()
+		if operation != .none {
+		let currentOp = operation
+			result()
+			operation = currentOp
+		} else {
+			result()
+		}
+		
+		
 		
 		sender.shine()
 	}
@@ -306,12 +299,9 @@ final class HomeViewController: UIViewController {
 	
 	private func result() {
 		
-		let speedOfSound = SpeedOfSound(20)
-		
 		switch operation {
 		
 		case .none:
-			// No hacemos nada
 			break
 		case .addition:
 			total = total + temp
@@ -325,10 +315,6 @@ final class HomeViewController: UIViewController {
 		case .division:
 			total = total / temp
 			break
-		case .convert:
-			total = temp * speedOfSound
-			
-			break
 		}
 		
 		// Formateo en pantalla
@@ -340,7 +326,7 @@ final class HomeViewController: UIViewController {
 				}
 		
 		operation = .none
-		
+
 		selectVisualOperation()
 		
 		// Para guardar el resultado en memoria
@@ -361,7 +347,7 @@ final class HomeViewController: UIViewController {
 			operatorDivision.selectOperation(false)
 		} else {
 			switch operation {
-			case .none, .convert:
+			case .none:
 				operatorAddition.selectOperation(false)
 				operatorSubstraction.selectOperation(false)
 				operatorMultiplication.selectOperation(false)
@@ -393,6 +379,18 @@ final class HomeViewController: UIViewController {
 				break
 			
 			}
+		}
+	}
+	
+	// Alterna el valor de MainUnitType
+	private func switchMainUnit() {
+		switch mainUnit {
+		case .meters:
+			mainUnit = .seconds
+			break
+		case .seconds:
+			mainUnit = .meters
+			break
 		}
 	}
 }
