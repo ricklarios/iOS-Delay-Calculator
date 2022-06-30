@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
 	// Temperature Label
 	@IBOutlet weak var temperatureLabel: UILabel!
 	// Speed of Sound Label
+	@IBOutlet weak var staticSpeedLabel: UILabel!
 	@IBOutlet weak var speedLabel: UILabel!
 	
 	// Temperature Slider
@@ -58,7 +59,7 @@ final class HomeViewController: UIViewController {
 	
 	private var operation: OperationType = .none
 	private var mainUnit: MainUnitType = .meters
-	
+	private var currentSliderColor = Int((127.5/55)*(selectedTemp) + 127.5)
 	private var speedOfSound: Double = SpeedOfSound(selectedTemp: selectedTemp)
 	
 	// MARK: - Constantes
@@ -66,8 +67,7 @@ final class HomeViewController: UIViewController {
 	private let kDecimalSeparator = Locale.current.decimalSeparator!
 	private let kMaxLength = 9
 	private let kTotal = "total"
-	// private let kMaxValue: Double = 999999999
-	// private let kMinValue: Double = 0.00000001
+	
 	
 	private enum OperationType {
 		case none, addition, substraction, multiplication, division
@@ -95,7 +95,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		
+		print(currentSliderColor)
 		
 		numberDecimal.setTitle(kDecimalSeparator, for: .normal)
 	    
@@ -110,13 +110,16 @@ final class HomeViewController: UIViewController {
 		// UI
 		
 		
-		temperatureSlider.minimumTrackTintColor = .blue
+		// temperatureSlider.minimumTrackTintColor = .blue
 		// temperatureSlider.maximumTrackTintColor = .red
 		temperatureSlider.minimumValue = -55
 		temperatureSlider.maximumValue = 55
 		temperatureSlider.value = Float(selectedTemp)
+		temperatureSlider.minimumTrackTintColor = UIColor(red: CGFloat(currentSliderColor)/255, green: 0/255, blue: 167/255, alpha: 1)
 		
-		speedLabel.text = "Vs = \(round(speedOfSound * 100) / 100) m/s"
+		staticSpeedLabel.text = "Vs = "
+		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
+		speedLabel.textColor = .orange
 		
 		unitLabel.text = mainUnit.rawValue
 		
@@ -155,6 +158,8 @@ final class HomeViewController: UIViewController {
 		selectedTemp = myTempSlideValue
 		let currentSpeed = SpeedOfSound(selectedTemp: selectedTemp)
 		speedLabel.text = "\(round(currentSpeed * 100) / 100) m/s"
+		currentSliderColor = Int((127.5/55)*(selectedTemp) + 127.5)
+		temperatureSlider.minimumTrackTintColor = UIColor(red: CGFloat(currentSliderColor)/255, green: 0/255, blue: 167/255, alpha: 1)
 	}
 	
 	
