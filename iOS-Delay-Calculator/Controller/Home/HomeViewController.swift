@@ -19,6 +19,9 @@ final class HomeViewController: UIViewController {
 	// Temperature Label
 	@IBOutlet weak var temperatureLabel: UILabel!
 	
+	// Temperature Slider
+	@IBOutlet weak var temperatureSlider: UISlider!
+	
 	
 	// Numbers buttons
 	@IBOutlet weak var number0: UIButton!
@@ -101,6 +104,16 @@ final class HomeViewController: UIViewController {
 		super.viewDidAppear(animated)
 		
 		// UI
+		
+		
+		temperatureSlider.minimumTrackTintColor = .blue
+		// temperatureSlider.maximumTrackTintColor = .red
+		temperatureSlider.minimumValue = -55
+		temperatureSlider.maximumValue = 55
+		temperatureSlider.value = 20
+		
+		unitLabel.text = mainUnit.rawValue
+		
 		number0.round()
 		number1.round()
 		number2.round()
@@ -122,10 +135,21 @@ final class HomeViewController: UIViewController {
 		operatorAddition.round()
 		operatorResult.round()
 		
-		unitLabel.text = mainUnit.rawValue
+		
 		
 	}
 
+	// MARK: - Slider Action
+	@IBAction func tempSliderAction(_ sender: Any) {
+		
+		let step: Double = 0.1
+		var myTempSlideValue: Double = Double(round(Double(temperatureSlider.value) / step) * step  )
+		myTempSlideValue = round(myTempSlideValue * 10) / 10
+		temperatureLabel.text = "\(myTempSlideValue) ºC"
+	}
+	
+	
+	
 	// MARK: - Button Actions
 	
 	@IBAction func operatorACAction(_ sender: UIButton) {

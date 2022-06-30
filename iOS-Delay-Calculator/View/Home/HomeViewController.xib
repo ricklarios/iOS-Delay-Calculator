@@ -32,6 +32,7 @@
                 <outlet property="operatorSubstraction" destination="NOn-LQ-U1T" id="0At-gP-Yfy"/>
                 <outlet property="resultLabel" destination="gj8-FE-ie7" id="ca7-ox-SI6"/>
                 <outlet property="temperatureLabel" destination="Psp-kG-Uy6" id="auQ-42-EKo"/>
+                <outlet property="temperatureSlider" destination="DIE-jQ-G3X" id="1BG-gk-Szk"/>
                 <outlet property="unitLabel" destination="QTH-SK-N2Z" id="Ufq-xc-JRK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -405,14 +406,20 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 ºC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psp-kG-Uy6">
-                    <rect key="frame" x="20" y="64" width="374" height="70"/>
+                    <rect key="frame" x="20" y="64" width="374" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="KdK-4q-dkD"/>
+                        <constraint firstAttribute="height" constant="50" id="KdK-4q-dkD"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DIE-jQ-G3X">
+                    <rect key="frame" x="18" y="119" width="378" height="31"/>
+                    <connections>
+                        <action selector="tempSliderAction:" destination="-1" eventType="valueChanged" id="Tmd-p0-teB"/>
+                    </connections>
+                </slider>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -420,6 +427,7 @@
                 <constraint firstItem="Psp-kG-Uy6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="7Pf-F7-8xq"/>
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="85u-Xr-rqF"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="gj8-FE-ie7" secondAttribute="bottom" constant="30" id="G6h-E1-lR6"/>
+                <constraint firstItem="DIE-jQ-G3X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Gq5-CK-Vav"/>
                 <constraint firstItem="Psp-kG-Uy6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Omq-JO-81U"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Psp-kG-Uy6" secondAttribute="trailing" constant="20" id="PLw-lt-QYt"/>
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="R0x-lC-451"/>
@@ -428,7 +436,9 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gj8-FE-ie7" secondAttribute="trailing" constant="20" id="a7f-iv-NpR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HNx-68-2hI" secondAttribute="trailing" priority="900" constant="18" id="bbi-Xt-cX4"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eG9-Va-vqU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DIE-jQ-G3X" secondAttribute="trailing" constant="20" id="euL-qw-9hj"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" priority="900" constant="18" id="ipw-zb-MjM"/>
+                <constraint firstItem="DIE-jQ-G3X" firstAttribute="top" secondItem="Psp-kG-Uy6" secondAttribute="bottom" constant="5" id="rxr-iq-Xon"/>
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="top" secondItem="QTH-SK-N2Z" secondAttribute="bottom" constant="20" id="u5x-xG-IvK"/>
             </constraints>
             <point key="canvasLocation" x="168" y="131"/>
