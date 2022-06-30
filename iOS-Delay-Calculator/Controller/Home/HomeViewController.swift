@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
 	// Temperature Label
 	@IBOutlet weak var temperatureLabel: UILabel!
 	
+	
 	// Temperature Slider
 	@IBOutlet weak var temperatureSlider: UISlider!
 	
@@ -110,7 +111,7 @@ final class HomeViewController: UIViewController {
 		// temperatureSlider.maximumTrackTintColor = .red
 		temperatureSlider.minimumValue = -55
 		temperatureSlider.maximumValue = 55
-		temperatureSlider.value = 20
+		temperatureSlider.value = Float(selectedTemp)
 		
 		unitLabel.text = mainUnit.rawValue
 		
@@ -146,6 +147,7 @@ final class HomeViewController: UIViewController {
 		var myTempSlideValue: Double = Double(round(Double(temperatureSlider.value) / step) * step  )
 		myTempSlideValue = round(myTempSlideValue * 10) / 10
 		temperatureLabel.text = "\(myTempSlideValue) ºC"
+		selectedTemp = myTempSlideValue
 	}
 	
 	
@@ -173,7 +175,7 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
-		let speedOfSound = SpeedOfSound(20)
+		let speedOfSound = SpeedOfSound()
 		if total != 0 { inputValue = total }
 //		operating = true
 //		operation = .convert
