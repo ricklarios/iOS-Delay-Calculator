@@ -11,10 +11,20 @@ final class HomeViewController: UIViewController {
 	
 	// MARK: - Outlets
 	
+	// Labels
 	// Result Label
 	@IBOutlet weak var resultLabel: UILabel!
 	// Measurement Unit Label
 	@IBOutlet weak var unitLabel: UILabel!
+	// Temperature Label
+	@IBOutlet weak var temperatureLabel: UILabel!
+	// Speed of Sound Label
+	@IBOutlet weak var staticSpeedLabel: UILabel!
+	@IBOutlet weak var speedLabel: UILabel!
+	
+	// Temperature Slider
+	@IBOutlet weak var temperatureSlider: UISlider!
+	
 	
 	// Numbers buttons
 	@IBOutlet weak var number0: UIButton!
@@ -49,14 +59,15 @@ final class HomeViewController: UIViewController {
 	
 	private var operation: OperationType = .none
 	private var mainUnit: MainUnitType = .meters
+	private var currentSliderColor = Int((127.5/55)*(selectedTemp) + 127.5)
+	private var speedOfSound: Double = SpeedOfSound(selectedTemp: selectedTemp)
 	
 	// MARK: - Constantes
 	
 	private let kDecimalSeparator = Locale.current.decimalSeparator!
 	private let kMaxLength = 9
 	private let kTotal = "total"
-	// private let kMaxValue: Double = 999999999
-	// private let kMinValue: Double = 0.00000001
+	
 	
 	private enum OperationType {
 		case none, addition, substraction, multiplication, division
@@ -84,7 +95,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		
+		print(currentSliderColor)
 		
 		numberDecimal.setTitle(kDecimalSeparator, for: .normal)
 	    
@@ -97,6 +108,21 @@ final class HomeViewController: UIViewController {
 		super.viewDidAppear(animated)
 		
 		// UI
+		
+		
+		// temperatureSlider.minimumTrackTintColor = .blue
+		// temperatureSlider.maximumTrackTintColor = .red
+		temperatureSlider.minimumValue = -55
+		temperatureSlider.maximumValue = 55
+		temperatureSlider.value = Float(selectedTemp)
+		temperatureSlider.minimumTrackTintColor = UIColor(red: CGFloat(currentSliderColor)/255, green: 0/255, blue: 167/255, alpha: 1)
+		
+		staticSpeedLabel.text = "Vs = "
+		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
+		speedLabel.textColor = orange
+		
+		unitLabel.text = mainUnit.rawValue
+		
 		number0.round()
 		number1.round()
 		number2.round()
@@ -118,16 +144,32 @@ final class HomeViewController: UIViewController {
 		operatorAddition.round()
 		operatorResult.round()
 		
-		unitLabel.text = mainUnit.rawValue
+		
 		
 	}
 
+	// MARK: - Slider Action
+	@IBAction func tempSliderAction(_ sender: Any) {
+		
+		let step: Double = 0.1
+		var myTempSlideValue: Double = Double(round(Double(temperatureSlider.value) / step) * step  )
+		myTempSlideValue = round(myTempSlideValue * 10) / 10
+		temperatureLabel.text = "\(myTempSlideValue) ºC"
+		selectedTemp = myTempSlideValue
+		let currentSpeed = SpeedOfSound(selectedTemp: selectedTemp)
+		speedLabel.text = "\(round(currentSpeed * 100) / 100) m/s"
+		currentSliderColor = Int((127.5/55)*(selectedTemp) + 127.5)
+		temperatureSlider.minimumTrackTintColor = UIColor(red: CGFloat(currentSliderColor)/255, green: 0/255, blue: 167/255, alpha: 1)
+	}
+	
+	
+	
 	// MARK: - Button Actions
 	
 	@IBAction func operatorACAction(_ sender: UIButton) {
 		
 		clear()
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorPlusMinusAction(_ sender: UIButton) {
@@ -139,13 +181,13 @@ final class HomeViewController: UIViewController {
 			resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 		}
 		
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
-		let speedOfSound = SpeedOfSound(20)
+		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
 		if total != 0 { inputValue = total }
 //		operating = true
 //		operation = .convert
@@ -165,6 +207,7 @@ final class HomeViewController: UIViewController {
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 		
 		switchMainUnit()
+		resultLabel.shine()
 		unitLabel.text = mainUnit.rawValue
 		
 		sender.shine()
@@ -182,7 +225,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .division
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorMultiplicationAction(_ sender: UIButton) {
@@ -196,7 +239,7 @@ final class HomeViewController: UIViewController {
 		operating = true
 		operation = .multiplication
 		
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorSubstractionAction(_ sender: UIButton) {
@@ -210,7 +253,7 @@ final class HomeViewController: UIViewController {
 		operating = true
 		operation = .substraction
 		
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorAdditionAction(_ sender: UIButton) {
@@ -224,12 +267,13 @@ final class HomeViewController: UIViewController {
 		operating = true
 		operation = .addition
 		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorResultAction(_ sender: UIButton) {
 		
-			result()
-		
+		resultLabel.shine()
+		result()		
 		sender.shine()
 	}
 	
