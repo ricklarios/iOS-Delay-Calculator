@@ -9,10 +9,10 @@ import Foundation
 
 public var selectedTemp: Double = 20
 
-public func SpeedOfSound () -> Double  {
-	
+public func SpeedOfSound (selectedTemp: Double) -> Double  {
+	let speedOfSound: Double
 	let temp: Double = selectedTemp
-	let speedOfSound = 331.4 + (0.61*temp)
+	speedOfSound = 331.4 + (0.61*temp)
 	return speedOfSound
 }
 

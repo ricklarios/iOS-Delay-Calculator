@@ -18,7 +18,8 @@ final class HomeViewController: UIViewController {
 	@IBOutlet weak var unitLabel: UILabel!
 	// Temperature Label
 	@IBOutlet weak var temperatureLabel: UILabel!
-	
+	// Speed of Sound Label
+	@IBOutlet weak var speedLabel: UILabel!
 	
 	// Temperature Slider
 	@IBOutlet weak var temperatureSlider: UISlider!
@@ -57,6 +58,8 @@ final class HomeViewController: UIViewController {
 	
 	private var operation: OperationType = .none
 	private var mainUnit: MainUnitType = .meters
+	
+	private var speedOfSound: Double = SpeedOfSound(selectedTemp: selectedTemp)
 	
 	// MARK: - Constantes
 	
@@ -113,6 +116,8 @@ final class HomeViewController: UIViewController {
 		temperatureSlider.maximumValue = 55
 		temperatureSlider.value = Float(selectedTemp)
 		
+		speedLabel.text = "Vs = \(round(speedOfSound * 100) / 100) m/s"
+		
 		unitLabel.text = mainUnit.rawValue
 		
 		number0.round()
@@ -148,6 +153,8 @@ final class HomeViewController: UIViewController {
 		myTempSlideValue = round(myTempSlideValue * 10) / 10
 		temperatureLabel.text = "\(myTempSlideValue) ºC"
 		selectedTemp = myTempSlideValue
+		let currentSpeed = SpeedOfSound(selectedTemp: selectedTemp)
+		speedLabel.text = "\(round(currentSpeed * 100) / 100) m/s"
 	}
 	
 	
@@ -175,7 +182,7 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
-		let speedOfSound = SpeedOfSound()
+		
 		if total != 0 { inputValue = total }
 //		operating = true
 //		operation = .convert
