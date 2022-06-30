@@ -399,7 +399,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m/s units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTH-SK-N2Z">
-                    <rect key="frame" x="325" y="208" width="69" height="40"/>
+                    <rect key="frame" x="325" y="228" width="69" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="CNC-Vc-OMZ"/>
                     </constraints>
@@ -472,7 +472,7 @@
                 <constraint firstItem="HNx-68-2hI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" priority="900" constant="18" id="ipw-zb-MjM"/>
                 <constraint firstItem="x9I-Nr-SRA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ja8-xd-JCC"/>
                 <constraint firstItem="DIE-jQ-G3X" firstAttribute="top" secondItem="Psp-kG-Uy6" secondAttribute="bottom" constant="10" id="rxr-iq-Xon"/>
-                <constraint firstItem="gj8-FE-ie7" firstAttribute="top" secondItem="QTH-SK-N2Z" secondAttribute="bottom" constant="20" id="u5x-xG-IvK"/>
+                <constraint firstItem="gj8-FE-ie7" firstAttribute="top" secondItem="QTH-SK-N2Z" secondAttribute="bottom" id="u5x-xG-IvK"/>
             </constraints>
             <point key="canvasLocation" x="168" y="131"/>
         </view>

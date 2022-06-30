@@ -169,7 +169,7 @@ final class HomeViewController: UIViewController {
 	@IBAction func operatorACAction(_ sender: UIButton) {
 		
 		clear()
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorPlusMinusAction(_ sender: UIButton) {
@@ -181,7 +181,7 @@ final class HomeViewController: UIViewController {
 			resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 		}
 		
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	
@@ -207,6 +207,7 @@ final class HomeViewController: UIViewController {
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 		
 		switchMainUnit()
+		resultLabel.shine()
 		unitLabel.text = mainUnit.rawValue
 		
 		sender.shine()
@@ -224,7 +225,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .division
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorMultiplicationAction(_ sender: UIButton) {
@@ -238,7 +239,7 @@ final class HomeViewController: UIViewController {
 		operating = true
 		operation = .multiplication
 		
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorSubstractionAction(_ sender: UIButton) {
@@ -252,7 +253,7 @@ final class HomeViewController: UIViewController {
 		operating = true
 		operation = .substraction
 		
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorAdditionAction(_ sender: UIButton) {
@@ -266,13 +267,13 @@ final class HomeViewController: UIViewController {
 		operating = true
 		operation = .addition
 		
-		
+		resultLabel.shine()
 		sender.shine()
 	}
 	@IBAction func operatorResultAction(_ sender: UIButton) {
 		
-		result()
-		
+		resultLabel.shine()
+		result()		
 		sender.shine()
 	}
 	
