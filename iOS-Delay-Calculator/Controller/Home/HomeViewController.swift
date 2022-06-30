@@ -22,10 +22,12 @@ final class HomeViewController: UIViewController {
 	@IBOutlet weak var staticSpeedLabel: UILabel!
 	@IBOutlet weak var speedLabel: UILabel!
 	
-	// Temperature Slider
+	// Slider
 	@IBOutlet weak var temperatureSlider: UISlider!
 	
-	
+	// Segmented Control
+	@IBOutlet weak var unitsSegmentedControl: UISegmentedControl!
+		
 	// Numbers buttons
 	@IBOutlet weak var number0: UIButton!
 	@IBOutlet weak var number1: UIButton!
@@ -62,12 +64,13 @@ final class HomeViewController: UIViewController {
 	private var currentSliderColor = Int((127.5/55)*(selectedTemp) + 127.5)
 	private var speedOfSound: Double = SpeedOfSound(selectedTemp: selectedTemp)
 	
+	
 	// MARK: - Constantes
 	
 	private let kDecimalSeparator = Locale.current.decimalSeparator!
 	private let kMaxLength = 9
 	private let kTotal = "total"
-	
+	private let unitsSGArray: Array<String> = ["meters", "seconds"]
 	
 	private enum OperationType {
 		case none, addition, substraction, multiplication, division
@@ -109,20 +112,35 @@ final class HomeViewController: UIViewController {
 		
 		// UI
 		
-		
-		// temperatureSlider.minimumTrackTintColor = .blue
-		// temperatureSlider.maximumTrackTintColor = .red
+		// Slider
 		temperatureSlider.minimumValue = -55
 		temperatureSlider.maximumValue = 55
 		temperatureSlider.value = Float(selectedTemp)
 		temperatureSlider.minimumTrackTintColor = UIColor(red: CGFloat(currentSliderColor)/255, green: 0/255, blue: 167/255, alpha: 1)
 		
+		// Labels
 		staticSpeedLabel.text = "Vs = "
 		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
 		speedLabel.textColor = orange
 		
 		unitLabel.text = mainUnit.rawValue
 		
+		// Segmented Controls
+		unitsSegmentedControl.removeAllSegments()
+		
+		for (index, value) in unitsSGArray.enumerated() {
+			unitsSegmentedControl.insertSegment(withTitle: value, at: index, animated: true)
+		}
+		unitsSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for:  .normal)
+		unitsSegmentedControl.selectedSegmentIndex = unitsSGArray.firstIndex(of: mainUnit.rawValue)!
+		if #available(iOS 13.0, *) {
+			unitsSegmentedControl.selectedSegmentTintColor = .blue
+		} else {
+			// Fallback on earlier versions
+		}
+		
+		
+		// Buttons
 		number0.round()
 		number1.round()
 		number2.round()
@@ -163,7 +181,12 @@ final class HomeViewController: UIViewController {
 	}
 	
 	
+	// MARK: - Segmented Control Action
 	
+	@IBAction func segmentedControlAction(_ sender: Any) {
+		convertUnits()
+	
+	}
 	// MARK: - Button Actions
 	
 	@IBAction func operatorACAction(_ sender: UIButton) {
@@ -180,36 +203,14 @@ final class HomeViewController: UIViewController {
 			inputValue = inputValue == 0 ? 0 : inputValue * (-1)
 			resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 		}
-		
 		resultLabel.shine()
 		sender.shine()
 	}
 	
+	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
-		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
-		if total != 0 { inputValue = total }
-//		operating = true
-//		operation = .convert
-		
-			switch mainUnit {
-			case .meters:
-				total = inputValue / speedOfSound
-				break
-			case .seconds:
-				total = inputValue * speedOfSound
-				break
-			}
-		
-		
-		
-		
-		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
-		
-		switchMainUnit()
-		resultLabel.shine()
-		unitLabel.text = mainUnit.rawValue
-		
+		convertUnits()
 		sender.shine()
 	}
 	
@@ -439,5 +440,38 @@ final class HomeViewController: UIViewController {
 			mainUnit = .meters
 			break
 		}
+	}
+	// Convert units func
+	
+	private func convertUnits() {
+		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
+		if total != 0 { inputValue = total }
+		
+		switch mainUnit {
+		case .meters:
+			total = inputValue / speedOfSound
+			if #available(iOS 13.0, *) {
+				unitsSegmentedControl.selectedSegmentTintColor = .green
+			} else {
+				// Fallback on earlier versions
+			}
+			break
+		case .seconds:
+			total = inputValue * speedOfSound
+			if #available(iOS 13.0, *) {
+				unitsSegmentedControl.selectedSegmentTintColor = .blue
+			} else {
+				// Fallback on earlier versions
+			}
+			break
+		}
+		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
+				
+		switchMainUnit()
+		unitsSegmentedControl.selectedSegmentIndex = unitsSGArray.firstIndex(of: mainUnit.rawValue) ?? 0
+		resultLabel.shine()
+		unitLabel.text = mainUnit.rawValue
+		
+		
 	}
 }
