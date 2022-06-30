@@ -42,11 +42,12 @@ final class HomeViewController: UIViewController {
 	// MARK: - Variables
 	
 	private var total: Double = 0 		// Total
-	private var temp: Double = 0 		// Valor por pantalla
+	private var inputValue: Double = 0			// Primer operador
+	private var tempValue: Double = 0			// Segundo operador
 	private var operating = false 		// Indica si se ha seleccionado un operador
 	private var decimal = false 		// Indica si el valor es decimal
-	private var operation: OperationType = .none
 	
+	private var operation: OperationType = .none
 	private var mainUnit: MainUnitType = .meters
 	
 	// MARK: - Constantes
@@ -130,9 +131,14 @@ final class HomeViewController: UIViewController {
 		sender.shine()
 	}
 	@IBAction func operatorPlusMinusAction(_ sender: UIButton) {
+		if total != 0 {
+			total = total * (-1)
+			resultLabel.text = printFormatter.string(from: NSNumber(value: total))
+		} else {
+			inputValue = inputValue == 0 ? 0 : inputValue * (-1)
+			resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
+		}
 		
-		temp = temp * (-1)
-		resultLabel.text = printFormatter.string(from: NSNumber(value: temp))
 		
 		sender.shine()
 	}
@@ -140,17 +146,20 @@ final class HomeViewController: UIViewController {
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
 		let speedOfSound = SpeedOfSound(20)
-		total = total == 0 ? temp : total
+		if total != 0 { inputValue = total }
 //		operating = true
 //		operation = .convert
-		switch mainUnit {
-		case .meters:
-			total = total / speedOfSound
-			break
-		case .seconds:
-			total = total * speedOfSound
-			break
-		}
+		
+			switch mainUnit {
+			case .meters:
+				total = inputValue / speedOfSound
+				break
+			case .seconds:
+				total = inputValue * speedOfSound
+				break
+			}
+		
+		
 		
 		
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
@@ -165,79 +174,68 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func operatorDivisionAction(_ sender: UIButton) {
 		
-		if operation != .none, operation != .division {
+		if operation != .none  {
 			result()
-		} else if operation != .none, operation == .division {
-			sender.shine()
-			return
+		} else if total != 0 {
+			tempValue = total
 		}
-				
+		
 		operating = true
 		operation = .division
-		sender.selectOperation(true)
 		
 		sender.shine()
 	}
 	@IBAction func operatorMultiplicationAction(_ sender: UIButton) {
 		
-		if operation != .none, operation != .multiplication {
+		if operation != .none  {
 			result()
-		} else if operation != .none, operation == .multiplication {
-			sender.shine()
-			return
+		} else if total != 0 {
+			tempValue = total
 		}
+		
 		operating = true
 		operation = .multiplication
-		sender.selectOperation(true)
+		
 		
 		sender.shine()
 	}
 	@IBAction func operatorSubstractionAction(_ sender: UIButton) {
 		
-		if operation != .none, operation != .substraction {
+		if operation != .none  {
 			result()
-		} else if operation != .none, operation == .substraction {
-			sender.shine()
-			return
+		} else if total != 0 {
+			tempValue = total
 		}
+		
 		operating = true
 		operation = .substraction
-		sender.selectOperation(true)
+		
 		
 		sender.shine()
 	}
 	@IBAction func operatorAdditionAction(_ sender: UIButton) {
 		
-		if operation != .none, operation != .addition {
+		if operation != .none  {
 			result()
-		} else if operation != .none, operation == .addition {
-			sender.shine()
-			return
+		} else if total != 0 {
+			tempValue = total
 		}
+		
 		operating = true
 		operation = .addition
-		sender.selectOperation(true)
 		
 		sender.shine()
 	}
 	@IBAction func operatorResultAction(_ sender: UIButton) {
 		
-		if operation != .none {
-		let currentOp = operation
 			result()
-			operation = currentOp
-		} else {
-			result()
-		}
-		
-		
 		
 		sender.shine()
 	}
 	
 	@IBAction func numberDecimalAction(_ sender: UIButton) {
 		
-		let currentTemp = auxTotalFormatter.string(from: NSNumber(value: temp))!
+		let currentTemp = auxTotalFormatter.string(from: NSNumber(value: inputValue))!
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
@@ -245,7 +243,7 @@ final class HomeViewController: UIViewController {
 		resultLabel.text = resultLabel.text! + kDecimalSeparator
 		decimal = true
 		
-		selectVisualOperation()
+		
 		
 		sender.shine()
 	}
@@ -254,32 +252,37 @@ final class HomeViewController: UIViewController {
 				
 		operatorAC.setTitle("C", for: .normal)
 		
-		var currentTemp = auxTotalFormatter.string(from: NSNumber(value: temp))!
+		
+		var currentTemp = auxTotalFormatter.string(from: NSNumber(value: inputValue))!
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
 		
-		currentTemp = auxFormatter.string(from: NSNumber(value: temp))!
+		currentTemp = auxFormatter.string(from: NSNumber(value: inputValue))!
 		
-		// Hemos seleccionado una operación
+		
+		// Si hemos seleccionado una operación
 		if operating {
-			total = total == 0 ? temp : total
+			tempValue = tempValue == 0 ? inputValue : tempValue
 			resultLabel.text = ""
 			currentTemp = ""
 			operating = false
 			
 		}
 		
+		
+		
+		// Si hemos seleccionado decimal
 		if decimal {
 			currentTemp = "\(currentTemp)\(kDecimalSeparator)"
 			decimal = false
 		}
 		
+		// Por defecto
 		let number = sender.tag
-		temp = Double(currentTemp + String(number))!
-		resultLabel.text = printFormatter.string(from: NSNumber(value: temp))
+		inputValue = Double(currentTemp + String(number))!
+		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 		
-		selectVisualOperation()
 		
 		sender.shine()
 	}
@@ -288,10 +291,12 @@ final class HomeViewController: UIViewController {
 	private func clear() {
 		operation = .none
 		operatorAC.setTitle("AC", for: .normal)
-		if temp != 0 {
-			temp = 0
+		if inputValue != 0 {
+			inputValue = 0
 			resultLabel.text = "0"
 		} else {
+			inputValue = 0
+			tempValue = 0
 			total = 0
 			result()
 		}
@@ -304,83 +309,81 @@ final class HomeViewController: UIViewController {
 		case .none:
 			break
 		case .addition:
-			total = total + temp
+			total = tempValue + inputValue
 			break
 		case .substraction:
-			total = total - temp
+			total = tempValue - inputValue
 			break
 		case .multiplication:
-			total = total * temp
+			total = tempValue * inputValue
 			break
 		case .division:
-			total = total / temp
+			total = tempValue / inputValue
 			break
 		}
 		
 		// Formateo en pantalla
 		
-		if let currentTotal = auxTotalFormatter.string(from: NSNumber(value: total)), currentTotal.count > kMaxLength {
-					resultLabel.text = printScientificFormatter.string(from: NSNumber(value: total))
-				} else {
-					resultLabel.text = printFormatter.string(from: NSNumber(value: total))
-				}
+		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
+				
 		
 		operation = .none
-
-		selectVisualOperation()
 		
 		// Para guardar el resultado en memoria
 		UserDefaults.standard.set(total, forKey: kTotal)
 		
+		print("input: \(inputValue)")
+		print("temp: \(tempValue)")
 		print("TOTAL: \(total)")
+		
 		
 	}
 	
 	// Muestra de forma visual la operación seleccionada
-	private func selectVisualOperation() {
-		
-		if !operating {
-			// Si no estamos operando
-			operatorAddition.selectOperation(false)
-			operatorSubstraction.selectOperation(false)
-			operatorMultiplication.selectOperation(false)
-			operatorDivision.selectOperation(false)
-		} else {
-			switch operation {
-			case .none:
-				operatorAddition.selectOperation(false)
-				operatorSubstraction.selectOperation(false)
-				operatorMultiplication.selectOperation(false)
-				operatorDivision.selectOperation(false)
-				break
-			case .addition:
-				operatorAddition.selectOperation(true)
-				operatorSubstraction.selectOperation(false)
-				operatorMultiplication.selectOperation(false)
-				operatorDivision.selectOperation(false)
-				break
-			case .substraction:
-				operatorAddition.selectOperation(false)
-				operatorSubstraction.selectOperation(true)
-				operatorMultiplication.selectOperation(false)
-				operatorDivision.selectOperation(false)
-				break
-			case .multiplication:
-				operatorAddition.selectOperation(false)
-				operatorSubstraction.selectOperation(false)
-				operatorMultiplication.selectOperation(true)
-				operatorDivision.selectOperation(false)
-				break
-			case .division:
-				operatorAddition.selectOperation(false)
-				operatorSubstraction.selectOperation(false)
-				operatorMultiplication.selectOperation(false)
-				operatorDivision.selectOperation(true)
-				break
-			
-			}
-		}
-	}
+//	private func selectVisualOperation() {
+//
+//		if !operating {
+//			// Si no estamos operando
+//			operatorAddition.selectOperation(false)
+//			operatorSubstraction.selectOperation(false)
+//			operatorMultiplication.selectOperation(false)
+//			operatorDivision.selectOperation(false)
+//		} else {
+//			switch operation {
+//			case .none:
+//				operatorAddition.selectOperation(false)
+//				operatorSubstraction.selectOperation(false)
+//				operatorMultiplication.selectOperation(false)
+//				operatorDivision.selectOperation(false)
+//				break
+//			case .addition:
+//				operatorAddition.selectOperation(true)
+//				operatorSubstraction.selectOperation(false)
+//				operatorMultiplication.selectOperation(false)
+//				operatorDivision.selectOperation(false)
+//				break
+//			case .substraction:
+//				operatorAddition.selectOperation(false)
+//				operatorSubstraction.selectOperation(true)
+//				operatorMultiplication.selectOperation(false)
+//				operatorDivision.selectOperation(false)
+//				break
+//			case .multiplication:
+//				operatorAddition.selectOperation(false)
+//				operatorSubstraction.selectOperation(false)
+//				operatorMultiplication.selectOperation(true)
+//				operatorDivision.selectOperation(false)
+//				break
+//			case .division:
+//				operatorAddition.selectOperation(false)
+//				operatorSubstraction.selectOperation(false)
+//				operatorMultiplication.selectOperation(false)
+//				operatorDivision.selectOperation(true)
+//				break
+//
+//			}
+//		}
+//	}
 	
 	// Alterna el valor de MainUnitType
 	private func switchMainUnit() {
