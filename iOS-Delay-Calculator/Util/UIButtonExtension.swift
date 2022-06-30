@@ -28,6 +28,7 @@ extension UIButton {
 			}
 		}
 	
+
 	// Apariencia selección botón de operación
 		func selectOperation(_ selected: Bool) {
 			backgroundColor = selected ? .white : orange

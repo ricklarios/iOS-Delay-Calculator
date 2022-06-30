@@ -11,10 +11,14 @@ final class HomeViewController: UIViewController {
 	
 	// MARK: - Outlets
 	
+	// Labels
 	// Result Label
 	@IBOutlet weak var resultLabel: UILabel!
 	// Measurement Unit Label
 	@IBOutlet weak var unitLabel: UILabel!
+	// Temperature Label
+	@IBOutlet weak var temperatureLabel: UILabel!
+	
 	
 	// Numbers buttons
 	@IBOutlet weak var number0: UIButton!
@@ -223,6 +227,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .addition
+		
 		
 		sender.shine()
 	}
