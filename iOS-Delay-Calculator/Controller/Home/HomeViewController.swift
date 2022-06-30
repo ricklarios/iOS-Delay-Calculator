@@ -119,7 +119,7 @@ final class HomeViewController: UIViewController {
 		
 		staticSpeedLabel.text = "Vs = "
 		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
-		speedLabel.textColor = .orange
+		speedLabel.textColor = orange
 		
 		unitLabel.text = mainUnit.rawValue
 		
@@ -187,7 +187,7 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
-		
+		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
 		if total != 0 { inputValue = total }
 //		operating = true
 //		operation = .convert
@@ -271,7 +271,7 @@ final class HomeViewController: UIViewController {
 	}
 	@IBAction func operatorResultAction(_ sender: UIButton) {
 		
-			result()
+		result()
 		
 		sender.shine()
 	}
