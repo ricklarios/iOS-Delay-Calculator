@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6055DE77286FA5BF0007AE94 /* UIColorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6055DE76286FA5BF0007AE94 /* UIColorHelpers.swift */; };
 		606926EF286902DB00016EA2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926ED286902DB00016EA2 /* HomeViewController.swift */; };
 		606926F0286902DB00016EA2 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606926EE286902DB00016EA2 /* HomeViewController.xib */; };
 		606926F22869178C00016EA2 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606926F12869178C00016EA2 /* UIButtonExtension.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6055DE76286FA5BF0007AE94 /* UIColorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHelpers.swift; sourceTree = "<group>"; };
 		606926ED286902DB00016EA2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		606926EE286902DB00016EA2 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		606926F12869178C00016EA2 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
@@ -83,13 +85,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		606926E52869019700016EA2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		606926E62869019F00016EA2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +109,7 @@
 				60B5AB05286B7B9300988E1A /* SpeedOfSound.swift */,
 				60B5AB0C286BCDF700988E1A /* Formatters.swift */,
 				60B5AB10286E0FF600988E1A /* UILabelExtension.swift */,
+				6055DE76286FA5BF0007AE94 /* UIColorHelpers.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -169,7 +165,6 @@
 				606926E8286901AB00016EA2 /* Util */,
 				606926E7286901A500016EA2 /* View */,
 				606926E62869019F00016EA2 /* Controller */,
-				606926E52869019700016EA2 /* Model */,
 				60FD8DDC285D44BF00B652C8 /* Supporting Files */,
 				60FD8DB5285D441600B652C8 /* Assets.xcassets */,
 			);
@@ -337,6 +332,7 @@
 				60FD8DAD285D441000B652C8 /* AppDelegate.swift in Sources */,
 				606926EF286902DB00016EA2 /* HomeViewController.swift in Sources */,
 				60B5AB0D286BCDF700988E1A /* Formatters.swift in Sources */,
+				6055DE77286FA5BF0007AE94 /* UIColorHelpers.swift in Sources */,
 				60B5AB11286E0FF600988E1A /* UILabelExtension.swift in Sources */,
 				606926F22869178C00016EA2 /* UIButtonExtension.swift in Sources */,
 			);
