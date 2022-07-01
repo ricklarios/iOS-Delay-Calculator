@@ -71,6 +71,8 @@ final class HomeViewController: UIViewController {
 	private let kMaxLength = 9
 	private let kTotal = "total"
 	private let unitsSGArray: Array<String> = ["meters", "seconds"]
+	private let metersColor: UIColor = UIColor(red: 0/255, green: 80/255, blue: 255/255, alpha: 0.8)
+	private let secondsColor: UIColor = UIColor(red: 46/255, green: 186/255, blue: 80/255, alpha: 0.8)
 	
 	private enum OperationType {
 		case none, addition, substraction, multiplication, division
@@ -86,9 +88,7 @@ final class HomeViewController: UIViewController {
 	
 	init() {
 		super.init(nibName: nil, bundle: nil)
-		
 	}
-	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -99,11 +99,8 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 		
 		print(currentSliderColor)
-		
 		numberDecimal.setTitle(kDecimalSeparator, for: .normal)
-	    
 		total = UserDefaults.standard.double(forKey: kTotal)
-		
 		result()
     }
 	
@@ -134,7 +131,7 @@ final class HomeViewController: UIViewController {
 		unitsSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for:  .normal)
 		unitsSegmentedControl.selectedSegmentIndex = unitsSGArray.firstIndex(of: mainUnit.rawValue)!
 		if #available(iOS 13.0, *) {
-			unitsSegmentedControl.selectedSegmentTintColor = .blue
+			unitsSegmentedControl.selectedSegmentTintColor = metersColor
 		} else {
 			// Fallback on earlier versions
 		}
@@ -178,6 +175,8 @@ final class HomeViewController: UIViewController {
 		speedLabel.text = "\(round(currentSpeed * 100) / 100) m/s"
 		currentSliderColor = Int((127.5/55)*(selectedTemp) + 127.5)
 		temperatureSlider.minimumTrackTintColor = UIColor(red: CGFloat(currentSliderColor)/255, green: 0/255, blue: 167/255, alpha: 1)
+		
+		
 	}
 	
 	
@@ -448,22 +447,22 @@ final class HomeViewController: UIViewController {
 		if total != 0 { inputValue = total }
 		
 		switch mainUnit {
-		case .meters:
-			total = inputValue / speedOfSound
-			if #available(iOS 13.0, *) {
-				unitsSegmentedControl.selectedSegmentTintColor = .green
-			} else {
-				// Fallback on earlier versions
-			}
-			break
-		case .seconds:
-			total = inputValue * speedOfSound
-			if #available(iOS 13.0, *) {
-				unitsSegmentedControl.selectedSegmentTintColor = .blue
-			} else {
-				// Fallback on earlier versions
-			}
-			break
+			
+			// Pasamos a SECONDS
+			case .meters:
+				total = inputValue / speedOfSound
+				if #available(iOS 13.0, *) {
+					unitsSegmentedControl.selectedSegmentTintColor = secondsColor
+				}
+				break
+			
+			// Pasamos a METERS
+			case .seconds:
+				total = inputValue * speedOfSound
+				if #available(iOS 13.0, *) {
+					unitsSegmentedControl.selectedSegmentTintColor = metersColor
+				}
+				break
 		}
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 				
