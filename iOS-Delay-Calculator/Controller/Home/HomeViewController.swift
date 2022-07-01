@@ -44,7 +44,6 @@ final class HomeViewController: UIViewController {
 	@IBOutlet weak var operatorAC: UIButton!
 	@IBOutlet weak var operatorPlusMinus: UIButton!
 	@IBOutlet weak var operatorConvert: UIButton!
-	
 	@IBOutlet weak var operatorDivision: UIButton!
 	@IBOutlet weak var operatorMultiplication: UIButton!
 	@IBOutlet weak var operatorSubstraction: UIButton!
@@ -53,16 +52,15 @@ final class HomeViewController: UIViewController {
 	
 	// MARK: - Variables
 	
-	private var total: Double = 0 		// Total
-	private var inputValue: Double = 0			// Primer operador
-	private var tempValue: Double = 0			// Segundo operador
-	private var operating = false 		// Indica si se ha seleccionado un operador
-	private var decimal = false 		// Indica si el valor es decimal
-	
+	private var total: Double = 0
+	private var inputValue: Double = 0
+	private var tempValue: Double = 0
+	private var operating = false
+	private var decimal = false
 	private var operation: OperationType = .none
 	private var mainUnit: MainUnitType = .meters
-	private var currentSliderColor = Int((127.5/55)*(selectedTemp) + 127.5)
 	private var speedOfSound: Double = SpeedOfSound(selectedTemp: selectedTemp)
+	public var currentSliderRColor = TempColorValue(selectedTemp: selectedTemp)
 	
 	
 	// MARK: - Constantes
@@ -71,18 +69,12 @@ final class HomeViewController: UIViewController {
 	private let kMaxLength = 9
 	private let kTotal = "total"
 	private let unitsSGArray: Array<String> = ["meters", "seconds"]
-	private let metersColor: UIColor = UIColor(red: 0/255, green: 80/255, blue: 255/255, alpha: 0.8)
-	private let secondsColor: UIColor = UIColor(red: 46/255, green: 186/255, blue: 80/255, alpha: 0.8)
-	
 	private enum OperationType {
 		case none, addition, substraction, multiplication, division
 	}
-	
 	private enum MainUnitType: String {
 		case meters = "meters", seconds = "seconds"
 	}
-	
-
 	
 	// MARK: - Initialization
 	
@@ -98,7 +90,6 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		print(currentSliderColor)
 		numberDecimal.setTitle(kDecimalSeparator, for: .normal)
 		total = UserDefaults.standard.double(forKey: kTotal)
 		result()
@@ -113,12 +104,12 @@ final class HomeViewController: UIViewController {
 		temperatureSlider.minimumValue = -55
 		temperatureSlider.maximumValue = 55
 		temperatureSlider.value = Float(selectedTemp)
-		temperatureSlider.minimumTrackTintColor = UIColor(red: CGFloat(currentSliderColor)/255, green: 0/255, blue: 167/255, alpha: 1)
+		temperatureSlider.minimumTrackTintColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
 		
 		// Labels
 		staticSpeedLabel.text = "Vs = "
 		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
-		speedLabel.textColor = orange
+		speedLabel.textColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
 		
 		unitLabel.text = mainUnit.rawValue
 		
@@ -166,17 +157,21 @@ final class HomeViewController: UIViewController {
 	// MARK: - Slider Action
 	@IBAction func tempSliderAction(_ sender: Any) {
 		
+		// Formateamos los valores del slider y los mostramos en la label
 		let step: Double = 0.1
 		var myTempSlideValue: Double = Double(round(Double(temperatureSlider.value) / step) * step  )
 		myTempSlideValue = round(myTempSlideValue * 10) / 10
 		temperatureLabel.text = "\(myTempSlideValue) ºC"
+		
+		// Calculamos la Vs en base a la temperatura seleccionada
 		selectedTemp = myTempSlideValue
 		let currentSpeed = SpeedOfSound(selectedTemp: selectedTemp)
 		speedLabel.text = "\(round(currentSpeed * 100) / 100) m/s"
-		currentSliderColor = Int((127.5/55)*(selectedTemp) + 127.5)
-		temperatureSlider.minimumTrackTintColor = UIColor(red: CGFloat(currentSliderColor)/255, green: 0/255, blue: 167/255, alpha: 1)
 		
-		
+		// Variamos color slider y Vs en función de la temperatura
+		currentSliderRColor = TempColorValue(selectedTemp: selectedTemp)
+		temperatureSlider.minimumTrackTintColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
+			
 	}
 	
 	
@@ -206,14 +201,11 @@ final class HomeViewController: UIViewController {
 		sender.shine()
 	}
 	
-	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
 		convertUnits()
 		sender.shine()
 	}
-	
-	
 	
 	@IBAction func operatorDivisionAction(_ sender: UIButton) {
 		
@@ -228,6 +220,7 @@ final class HomeViewController: UIViewController {
 		resultLabel.shine()
 		sender.shine()
 	}
+	
 	@IBAction func operatorMultiplicationAction(_ sender: UIButton) {
 		
 		if operation != .none  {
@@ -242,6 +235,7 @@ final class HomeViewController: UIViewController {
 		resultLabel.shine()
 		sender.shine()
 	}
+	
 	@IBAction func operatorSubstractionAction(_ sender: UIButton) {
 		
 		if operation != .none  {
@@ -256,6 +250,7 @@ final class HomeViewController: UIViewController {
 		resultLabel.shine()
 		sender.shine()
 	}
+	
 	@IBAction func operatorAdditionAction(_ sender: UIButton) {
 		
 		if operation != .none  {
@@ -270,6 +265,7 @@ final class HomeViewController: UIViewController {
 		resultLabel.shine()
 		sender.shine()
 	}
+	
 	@IBAction func operatorResultAction(_ sender: UIButton) {
 		
 		resultLabel.shine()
@@ -283,38 +279,27 @@ final class HomeViewController: UIViewController {
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
-		
 		resultLabel.text = resultLabel.text! + kDecimalSeparator
 		decimal = true
-		
-		
-		
 		sender.shine()
 	}
 	
 	@IBAction func numberAction(_ sender: UIButton) {
 				
 		operatorAC.setTitle("C", for: .normal)
-		
-		
 		var currentTemp = auxTotalFormatter.string(from: NSNumber(value: inputValue))!
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
-		
 		currentTemp = auxFormatter.string(from: NSNumber(value: inputValue))!
-		
-		
+				
 		// Si hemos seleccionado una operación
 		if operating {
 			tempValue = tempValue == 0 ? inputValue : tempValue
 			resultLabel.text = ""
 			currentTemp = ""
 			operating = false
-			
 		}
-		
-		
 		
 		// Si hemos seleccionado decimal
 		if decimal {
@@ -326,8 +311,6 @@ final class HomeViewController: UIViewController {
 		let number = sender.tag
 		inputValue = Double(currentTemp + String(number))!
 		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
-		
-		
 		sender.shine()
 	}
 	
@@ -349,7 +332,6 @@ final class HomeViewController: UIViewController {
 	private func result() {
 		
 		switch operation {
-		
 		case .none:
 			break
 		case .addition:
@@ -367,7 +349,6 @@ final class HomeViewController: UIViewController {
 		}
 		
 		// Formateo en pantalla
-		
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 				
 		
@@ -382,52 +363,6 @@ final class HomeViewController: UIViewController {
 		
 		
 	}
-	
-	// Muestra de forma visual la operación seleccionada
-//	private func selectVisualOperation() {
-//
-//		if !operating {
-//			// Si no estamos operando
-//			operatorAddition.selectOperation(false)
-//			operatorSubstraction.selectOperation(false)
-//			operatorMultiplication.selectOperation(false)
-//			operatorDivision.selectOperation(false)
-//		} else {
-//			switch operation {
-//			case .none:
-//				operatorAddition.selectOperation(false)
-//				operatorSubstraction.selectOperation(false)
-//				operatorMultiplication.selectOperation(false)
-//				operatorDivision.selectOperation(false)
-//				break
-//			case .addition:
-//				operatorAddition.selectOperation(true)
-//				operatorSubstraction.selectOperation(false)
-//				operatorMultiplication.selectOperation(false)
-//				operatorDivision.selectOperation(false)
-//				break
-//			case .substraction:
-//				operatorAddition.selectOperation(false)
-//				operatorSubstraction.selectOperation(true)
-//				operatorMultiplication.selectOperation(false)
-//				operatorDivision.selectOperation(false)
-//				break
-//			case .multiplication:
-//				operatorAddition.selectOperation(false)
-//				operatorSubstraction.selectOperation(false)
-//				operatorMultiplication.selectOperation(true)
-//				operatorDivision.selectOperation(false)
-//				break
-//			case .division:
-//				operatorAddition.selectOperation(false)
-//				operatorSubstraction.selectOperation(false)
-//				operatorMultiplication.selectOperation(false)
-//				operatorDivision.selectOperation(true)
-//				break
-//
-//			}
-//		}
-//	}
 	
 	// Alterna el valor de MainUnitType
 	private func switchMainUnit() {
@@ -468,9 +403,7 @@ final class HomeViewController: UIViewController {
 				
 		switchMainUnit()
 		unitsSegmentedControl.selectedSegmentIndex = unitsSGArray.firstIndex(of: mainUnit.rawValue) ?? 0
-		resultLabel.shine()
 		unitLabel.text = mainUnit.rawValue
-		
-		
+				
 	}
 }

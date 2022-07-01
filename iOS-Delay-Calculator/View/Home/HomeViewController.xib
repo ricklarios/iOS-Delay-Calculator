@@ -35,7 +35,7 @@
                 <outlet property="staticSpeedLabel" destination="ZxB-4f-9ve" id="HUP-GD-Q3O"/>
                 <outlet property="temperatureLabel" destination="Psp-kG-Uy6" id="auQ-42-EKo"/>
                 <outlet property="temperatureSlider" destination="DIE-jQ-G3X" id="1BG-gk-Szk"/>
-                <outlet property="unitLabel" destination="QTH-SK-N2Z" id="Ufq-xc-JRK"/>
+                <outlet property="unitLabel" destination="QTH-SK-N2Z" id="rpz-40-ggc"/>
                 <outlet property="unitsSegmentedControl" destination="ZrM-jn-wap" id="3bH-eL-hFW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -391,7 +391,7 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m/s units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTH-SK-N2Z">
-                    <rect key="frame" x="325" y="207" width="69" height="40"/>
+                    <rect key="frame" x="325" y="187" width="69" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="CNC-Vc-OMZ"/>
                     </constraints>
@@ -417,7 +417,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-Nr-SRA">
                     <rect key="frame" x="20" y="164" width="374" height="30"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vs = " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-4f-9ve">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vs = " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-4f-9ve">
                             <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="4Y3-lf-Mhe"/>
@@ -426,24 +426,24 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="m/s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjJ-kc-qMC">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="m/s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjJ-kc-qMC">
                             <rect key="frame" x="38" y="0.0" width="336" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="XcT-kd-pGR"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="gjJ-kc-qMC" secondAttribute="trailing" id="3Ww-My-aJ0"/>
-                        <constraint firstItem="gjJ-kc-qMC" firstAttribute="leading" secondItem="ZxB-4f-9ve" secondAttribute="trailing" priority="900" id="gP7-YM-kyH"/>
+                        <constraint firstItem="gjJ-kc-qMC" firstAttribute="leading" secondItem="ZxB-4f-9ve" secondAttribute="trailing" id="gP7-YM-kyH"/>
                         <constraint firstItem="ZxB-4f-9ve" firstAttribute="leading" secondItem="x9I-Nr-SRA" secondAttribute="leading" id="rqW-rb-exw"/>
                     </constraints>
                 </stackView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZrM-jn-wap">
-                    <rect key="frame" x="80" y="317" width="254" height="32"/>
+                    <rect key="frame" x="80" y="297" width="254" height="32"/>
                     <segments>
                         <segment title="First"/>
                         <segment title="Second"/>
@@ -453,7 +453,7 @@
                     </connections>
                 </segmentedControl>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="gj8-FE-ie7">
-                    <rect key="frame" x="20" y="247" width="374" height="70"/>
+                    <rect key="frame" x="20" y="227" width="374" height="70"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="229-vI-biD"/>
                     </constraints>
@@ -486,7 +486,7 @@
                 <constraint firstItem="x9I-Nr-SRA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ja8-xd-JCC"/>
                 <constraint firstItem="DIE-jQ-G3X" firstAttribute="top" secondItem="Psp-kG-Uy6" secondAttribute="bottom" constant="10" id="rxr-iq-Xon"/>
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="top" secondItem="QTH-SK-N2Z" secondAttribute="bottom" id="u5x-xG-IvK"/>
-                <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="ZrM-jn-wap" secondAttribute="bottom" constant="20" id="wGl-hE-wTt"/>
+                <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="ZrM-jn-wap" secondAttribute="bottom" constant="40" id="wGl-hE-wTt"/>
             </constraints>
             <point key="canvasLocation" x="168" y="131"/>
         </view>
