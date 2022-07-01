@@ -85,13 +85,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		606926E52869019700016EA2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		606926E62869019F00016EA2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,7 +165,6 @@
 				606926E8286901AB00016EA2 /* Util */,
 				606926E7286901A500016EA2 /* View */,
 				606926E62869019F00016EA2 /* Controller */,
-				606926E52869019700016EA2 /* Model */,
 				60FD8DDC285D44BF00B652C8 /* Supporting Files */,
 				60FD8DB5285D441600B652C8 /* Assets.xcassets */,
 			);
