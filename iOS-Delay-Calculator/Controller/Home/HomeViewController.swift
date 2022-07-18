@@ -286,6 +286,13 @@ final class HomeViewController: UIViewController {
 			return
 		}
 		
+		if operation != .none {
+			resultLabel.text = "0" + kDecimalSeparator
+			decimal = true
+			sender.shine()
+			return
+		}
+	
 		resultLabel.text = resultLabel.text! + kDecimalSeparator
 		decimal = true
 		sender.shine()
@@ -299,7 +306,7 @@ final class HomeViewController: UIViewController {
 			return
 		}
 		currentTemp = auxFormatter.string(from: NSNumber(value: inputValue))!
-		print("currentTemp 1: \(currentTemp)")
+		
 		// Si hemos seleccionado una operación
 		if operating {
 			tempValue = tempValue == 0 ? inputValue : tempValue
@@ -316,11 +323,7 @@ final class HomeViewController: UIViewController {
 		
 		// Por defecto
 		let number = sender.tag
-		print("currentTemp 2: \(currentTemp)")
-		let preInputValue = currentTemp + String(number)
-		print("preInputValue: \(preInputValue)")
-		inputValue = Double(preInputValue)!
-		print("inputValue: \(inputValue)")
+		inputValue = Double(currentTemp + String(number))!
 		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 		sender.shine()
 	}
@@ -364,7 +367,6 @@ final class HomeViewController: UIViewController {
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 				
 		operation = .none
-		decimal = false
 		
 		// Para guardar el resultado en memoria
 		UserDefaults.standard.set(total, forKey: kTotal)
@@ -372,6 +374,7 @@ final class HomeViewController: UIViewController {
 		print("input: \(inputValue)")
 		print("temp: \(tempValue)")
 		print("TOTAL: \(total)")
+		inputValue = 0
 		
 		
 	}
