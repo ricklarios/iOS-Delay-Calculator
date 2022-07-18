@@ -93,6 +93,10 @@ final class HomeViewController: UIViewController {
 		result()
     }
 	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
@@ -300,7 +304,7 @@ final class HomeViewController: UIViewController {
 		// Si hemos seleccionado decimal
 		if decimal {
 			currentTemp = "\(currentTemp)."
-			
+			decimal = false
 		}
 		
 		// Por defecto
