@@ -35,7 +35,6 @@
                 <outlet property="staticSpeedLabel" destination="ZxB-4f-9ve" id="HUP-GD-Q3O"/>
                 <outlet property="temperatureLabel" destination="Psp-kG-Uy6" id="auQ-42-EKo"/>
                 <outlet property="temperatureSlider" destination="DIE-jQ-G3X" id="1BG-gk-Szk"/>
-                <outlet property="unitLabel" destination="QTH-SK-N2Z" id="rpz-40-ggc"/>
                 <outlet property="unitsSegmentedControl" destination="ZrM-jn-wap" id="3bH-eL-hFW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -390,15 +389,6 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m/s units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTH-SK-N2Z">
-                    <rect key="frame" x="325" y="187" width="69" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="CNC-Vc-OMZ"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 ºC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psp-kG-Uy6">
                     <rect key="frame" x="20" y="54" width="374" height="50"/>
                     <constraints>
@@ -474,7 +464,6 @@
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="R0x-lC-451"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZrM-jn-wap" secondAttribute="trailing" constant="80" id="VMx-0z-TQ9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HNx-68-2hI" secondAttribute="bottom" constant="18" id="XZT-SG-xdO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QTH-SK-N2Z" secondAttribute="trailing" constant="20" id="ZFR-WC-U8g"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gj8-FE-ie7" secondAttribute="trailing" constant="20" id="a7f-iv-NpR"/>
                 <constraint firstItem="ZrM-jn-wap" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="80" id="aPE-mG-d4l"/>
                 <constraint firstItem="x9I-Nr-SRA" firstAttribute="top" secondItem="DIE-jQ-G3X" secondAttribute="bottom" constant="20" id="bMa-k6-Sih"/>
@@ -485,7 +474,6 @@
                 <constraint firstItem="x9I-Nr-SRA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ja8-xd-JCC"/>
                 <constraint firstItem="ZrM-jn-wap" firstAttribute="top" secondItem="gj8-FE-ie7" secondAttribute="bottom" constant="20" id="nnd-4h-7eh"/>
                 <constraint firstItem="DIE-jQ-G3X" firstAttribute="top" secondItem="Psp-kG-Uy6" secondAttribute="bottom" constant="10" id="rxr-iq-Xon"/>
-                <constraint firstItem="gj8-FE-ie7" firstAttribute="top" secondItem="QTH-SK-N2Z" secondAttribute="bottom" id="u5x-xG-IvK"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="ZrM-jn-wap" secondAttribute="bottom" constant="20" id="wGl-hE-wTt"/>
             </constraints>
             <point key="canvasLocation" x="168" y="131"/>

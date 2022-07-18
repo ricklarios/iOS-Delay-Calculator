@@ -14,8 +14,6 @@ final class HomeViewController: UIViewController {
 	// Labels
 	// Result Label
 	@IBOutlet weak var resultLabel: UILabel!
-	// Measurement Unit Label
-	@IBOutlet weak var unitLabel: UILabel!
 	// Temperature Label
 	@IBOutlet weak var temperatureLabel: UILabel!
 	// Speed of Sound Label
@@ -110,8 +108,6 @@ final class HomeViewController: UIViewController {
 		staticSpeedLabel.text = "Vs = "
 		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
 		speedLabel.textColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
-		
-		unitLabel.text = mainUnit.rawValue
 		
 		// Segmented Controls
 		unitsSegmentedControl.removeAllSegments()
@@ -375,7 +371,7 @@ final class HomeViewController: UIViewController {
 			break
 		}
 	}
-	// Convert units func
+	// Convert units function
 	
 	private func convertUnits() {
 		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
@@ -403,7 +399,6 @@ final class HomeViewController: UIViewController {
 				
 		switchMainUnit()
 		unitsSegmentedControl.selectedSegmentIndex = unitsSGArray.firstIndex(of: mainUnit.rawValue) ?? 0
-		unitLabel.text = mainUnit.rawValue
 				
 	}
 }
