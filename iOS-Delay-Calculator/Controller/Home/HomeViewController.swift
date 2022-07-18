@@ -303,8 +303,8 @@ final class HomeViewController: UIViewController {
 		
 		// Si hemos seleccionado decimal
 		if decimal {
-			currentTemp = "\(currentTemp)\(kDecimalSeparator)"
-			decimal = false
+			currentTemp = "\(currentTemp)."
+			
 		}
 		
 		// Por defecto
