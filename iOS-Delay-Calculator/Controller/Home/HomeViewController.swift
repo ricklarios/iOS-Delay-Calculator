@@ -203,6 +203,7 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
+		decimal = false
 		convertUnits()
 		sender.shine()
 	}
@@ -217,6 +218,8 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .division
+		decimal = false
+		
 		resultLabel.shine()
 		sender.shine()
 	}
@@ -231,6 +234,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .multiplication
+		decimal = false
 		
 		resultLabel.shine()
 		sender.shine()
@@ -246,6 +250,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .substraction
+		decimal = false
 		
 		resultLabel.shine()
 		sender.shine()
@@ -261,6 +266,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .addition
+		decimal = false
 		
 		resultLabel.shine()
 		sender.shine()
@@ -275,10 +281,11 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func numberDecimalAction(_ sender: UIButton) {
 		
-		let currentTemp = auxTotalFormatter.string(from: NSNumber(value: inputValue))!
-		if !operating && currentTemp.count >= kMaxLength {
+		let currentTemp = rawFormatter.string(from: NSNumber(value: inputValue))!
+		if resultLabel.text?.contains(kDecimalSeparator) ?? false || (!operating && currentTemp.count >= kMaxLength) {
 			return
 		}
+		
 		resultLabel.text = resultLabel.text! + kDecimalSeparator
 		decimal = true
 		sender.shine()
@@ -287,12 +294,12 @@ final class HomeViewController: UIViewController {
 	@IBAction func numberAction(_ sender: UIButton) {
 				
 		operatorAC.setTitle("C", for: .normal)
-		var currentTemp = auxTotalFormatter.string(from: NSNumber(value: inputValue))!
+		var currentTemp = rawFormatter.string(from: NSNumber(value: inputValue))!
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
 		currentTemp = auxFormatter.string(from: NSNumber(value: inputValue))!
-				
+		print("currentTemp 1: \(currentTemp)")
 		// Si hemos seleccionado una operación
 		if operating {
 			tempValue = tempValue == 0 ? inputValue : tempValue
@@ -303,13 +310,17 @@ final class HomeViewController: UIViewController {
 		
 		// Si hemos seleccionado decimal
 		if decimal {
-			currentTemp = "\(currentTemp)."
-			decimal = false
+				currentTemp = "\(currentTemp)."
+				decimal = false
 		}
 		
 		// Por defecto
 		let number = sender.tag
-		inputValue = Double(currentTemp + String(number))!
+		print("currentTemp 2: \(currentTemp)")
+		let preInputValue = currentTemp + String(number)
+		print("preInputValue: \(preInputValue)")
+		inputValue = Double(preInputValue)!
+		print("inputValue: \(inputValue)")
 		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 		sender.shine()
 	}
@@ -317,6 +328,7 @@ final class HomeViewController: UIViewController {
 	// Limpia los valores
 	private func clear() {
 		operation = .none
+		decimal = false
 		operatorAC.setTitle("AC", for: .normal)
 		if inputValue != 0 {
 			inputValue = 0
@@ -351,8 +363,8 @@ final class HomeViewController: UIViewController {
 		// Formateo en pantalla
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 				
-		
 		operation = .none
+		decimal = false
 		
 		// Para guardar el resultado en memoria
 		UserDefaults.standard.set(total, forKey: kTotal)
