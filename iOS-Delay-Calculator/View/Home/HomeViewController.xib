@@ -443,7 +443,7 @@
                     </constraints>
                 </stackView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZrM-jn-wap">
-                    <rect key="frame" x="80" y="297" width="254" height="32"/>
+                    <rect key="frame" x="80" y="317" width="254" height="32"/>
                     <segments>
                         <segment title="First"/>
                         <segment title="Second"/>
@@ -469,7 +469,6 @@
                 <constraint firstItem="Psp-kG-Uy6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="7Pf-F7-8xq"/>
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="85u-Xr-rqF"/>
                 <constraint firstItem="DIE-jQ-G3X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="Gq5-CK-Vav"/>
-                <constraint firstItem="ZrM-jn-wap" firstAttribute="top" secondItem="gj8-FE-ie7" secondAttribute="bottom" id="HLE-v1-sXE"/>
                 <constraint firstItem="Psp-kG-Uy6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Omq-JO-81U"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Psp-kG-Uy6" secondAttribute="trailing" constant="20" id="PLw-lt-QYt"/>
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="R0x-lC-451"/>
@@ -484,9 +483,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DIE-jQ-G3X" secondAttribute="trailing" constant="30" id="euL-qw-9hj"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" priority="900" constant="18" id="ipw-zb-MjM"/>
                 <constraint firstItem="x9I-Nr-SRA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ja8-xd-JCC"/>
+                <constraint firstItem="ZrM-jn-wap" firstAttribute="top" secondItem="gj8-FE-ie7" secondAttribute="bottom" constant="20" id="nnd-4h-7eh"/>
                 <constraint firstItem="DIE-jQ-G3X" firstAttribute="top" secondItem="Psp-kG-Uy6" secondAttribute="bottom" constant="10" id="rxr-iq-Xon"/>
                 <constraint firstItem="gj8-FE-ie7" firstAttribute="top" secondItem="QTH-SK-N2Z" secondAttribute="bottom" id="u5x-xG-IvK"/>
-                <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="ZrM-jn-wap" secondAttribute="bottom" constant="40" id="wGl-hE-wTt"/>
+                <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="ZrM-jn-wap" secondAttribute="bottom" constant="20" id="wGl-hE-wTt"/>
             </constraints>
             <point key="canvasLocation" x="168" y="131"/>
         </view>
