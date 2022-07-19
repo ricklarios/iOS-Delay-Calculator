@@ -7,7 +7,7 @@
 
 import Foundation
 
-public var selectedTemp: Double = 20
+public var selectedTemp: Double = 20.0
 
 public func SpeedOfSound (selectedTemp: Double) -> Double  {
 	let speedOfSound: Double

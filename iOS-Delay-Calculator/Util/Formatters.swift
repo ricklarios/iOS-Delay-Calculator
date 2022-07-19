@@ -12,7 +12,7 @@ import Foundation
 		let formatter = NumberFormatter()
 		let locale = Locale.current
 		formatter.groupingSeparator = ""
-		formatter.decimalSeparator = locale.decimalSeparator
+		formatter.decimalSeparator = "."
 		formatter.numberStyle = .decimal
 		formatter.maximumIntegerDigits = 100
 		formatter.minimumFractionDigits = 0
@@ -20,7 +20,7 @@ import Foundation
 		return formatter
 	}()
 // Formateo de valores auxiliares totales
-public let auxTotalFormatter: NumberFormatter = {
+public let rawFormatter: NumberFormatter = {
 		let formatter = NumberFormatter()
 		formatter.groupingSeparator = ""
 		formatter.decimalSeparator = ""

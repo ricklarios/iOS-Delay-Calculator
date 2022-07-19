@@ -14,14 +14,14 @@ final class HomeViewController: UIViewController {
 	// Labels
 	// Result Label
 	@IBOutlet weak var resultLabel: UILabel!
-	// Measurement Unit Label
-	@IBOutlet weak var unitLabel: UILabel!
 	// Temperature Label
 	@IBOutlet weak var temperatureLabel: UILabel!
 	// Speed of Sound Label
 	@IBOutlet weak var staticSpeedLabel: UILabel!
 	@IBOutlet weak var speedLabel: UILabel!
 	
+	// View
+	@IBOutlet weak var selectTempView: UIView!
 	// Slider
 	@IBOutlet weak var temperatureSlider: UISlider!
 	
@@ -95,10 +95,17 @@ final class HomeViewController: UIViewController {
 		result()
     }
 	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
 		// UI
+		
+		// View
+		selectTempView.layer.cornerRadius = 10
 		
 		// Slider
 		temperatureSlider.minimumValue = -55
@@ -107,11 +114,11 @@ final class HomeViewController: UIViewController {
 		temperatureSlider.minimumTrackTintColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
 		
 		// Labels
+		resultLabel.layer.masksToBounds = true
+		resultLabel.layer.cornerRadius = 10
 		staticSpeedLabel.text = "Vs = "
 		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
 		speedLabel.textColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
-		
-		unitLabel.text = mainUnit.rawValue
 		
 		// Segmented Controls
 		unitsSegmentedControl.removeAllSegments()
@@ -203,6 +210,7 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func operatorConvertAction(_ sender: UIButton) {
 		
+		decimal = false
 		convertUnits()
 		sender.shine()
 	}
@@ -217,6 +225,8 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .division
+		decimal = false
+		
 		resultLabel.shine()
 		sender.shine()
 	}
@@ -231,6 +241,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .multiplication
+		decimal = false
 		
 		resultLabel.shine()
 		sender.shine()
@@ -246,6 +257,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .substraction
+		decimal = false
 		
 		resultLabel.shine()
 		sender.shine()
@@ -261,6 +273,7 @@ final class HomeViewController: UIViewController {
 		
 		operating = true
 		operation = .addition
+		decimal = false
 		
 		resultLabel.shine()
 		sender.shine()
@@ -275,10 +288,18 @@ final class HomeViewController: UIViewController {
 	
 	@IBAction func numberDecimalAction(_ sender: UIButton) {
 		
-		let currentTemp = auxTotalFormatter.string(from: NSNumber(value: inputValue))!
-		if !operating && currentTemp.count >= kMaxLength {
+		let currentTemp = rawFormatter.string(from: NSNumber(value: inputValue))!
+		if resultLabel.text?.contains(kDecimalSeparator) ?? false || (!operating && currentTemp.count >= kMaxLength) {
 			return
 		}
+		
+		if operation != .none {
+			resultLabel.text = "0" + kDecimalSeparator
+			decimal = true
+			sender.shine()
+			return
+		}
+	
 		resultLabel.text = resultLabel.text! + kDecimalSeparator
 		decimal = true
 		sender.shine()
@@ -287,12 +308,12 @@ final class HomeViewController: UIViewController {
 	@IBAction func numberAction(_ sender: UIButton) {
 				
 		operatorAC.setTitle("C", for: .normal)
-		var currentTemp = auxTotalFormatter.string(from: NSNumber(value: inputValue))!
+		var currentTemp = rawFormatter.string(from: NSNumber(value: inputValue))!
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
 		currentTemp = auxFormatter.string(from: NSNumber(value: inputValue))!
-				
+		
 		// Si hemos seleccionado una operación
 		if operating {
 			tempValue = tempValue == 0 ? inputValue : tempValue
@@ -303,8 +324,8 @@ final class HomeViewController: UIViewController {
 		
 		// Si hemos seleccionado decimal
 		if decimal {
-			currentTemp = "\(currentTemp)\(kDecimalSeparator)"
-			decimal = false
+				currentTemp = "\(currentTemp)."
+				decimal = false
 		}
 		
 		// Por defecto
@@ -317,6 +338,7 @@ final class HomeViewController: UIViewController {
 	// Limpia los valores
 	private func clear() {
 		operation = .none
+		decimal = false
 		operatorAC.setTitle("AC", for: .normal)
 		if inputValue != 0 {
 			inputValue = 0
@@ -351,7 +373,6 @@ final class HomeViewController: UIViewController {
 		// Formateo en pantalla
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 				
-		
 		operation = .none
 		
 		// Para guardar el resultado en memoria
@@ -360,6 +381,7 @@ final class HomeViewController: UIViewController {
 		print("input: \(inputValue)")
 		print("temp: \(tempValue)")
 		print("TOTAL: \(total)")
+		inputValue = 0
 		
 		
 	}
@@ -375,7 +397,7 @@ final class HomeViewController: UIViewController {
 			break
 		}
 	}
-	// Convert units func
+	// Convert units function
 	
 	private func convertUnits() {
 		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
@@ -403,7 +425,6 @@ final class HomeViewController: UIViewController {
 				
 		switchMainUnit()
 		unitsSegmentedControl.selectedSegmentIndex = unitsSGArray.firstIndex(of: mainUnit.rawValue) ?? 0
-		unitLabel.text = mainUnit.rawValue
 				
 	}
 }
