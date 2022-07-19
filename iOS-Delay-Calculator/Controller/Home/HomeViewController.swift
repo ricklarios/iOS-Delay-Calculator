@@ -114,6 +114,8 @@ final class HomeViewController: UIViewController {
 		temperatureSlider.minimumTrackTintColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
 		
 		// Labels
+		resultLabel.layer.masksToBounds = true
+		resultLabel.layer.cornerRadius = 10
 		staticSpeedLabel.text = "Vs = "
 		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
 		speedLabel.textColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
