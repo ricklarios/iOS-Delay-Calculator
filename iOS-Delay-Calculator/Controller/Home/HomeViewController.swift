@@ -19,12 +19,10 @@ final class HomeViewController: UIViewController {
 	// Speed of Sound Label
 	@IBOutlet weak var staticSpeedLabel: UILabel!
 	@IBOutlet weak var speedLabel: UILabel!
-	
 	// View
 	@IBOutlet weak var selectTempView: UIView!
 	// Slider
 	@IBOutlet weak var temperatureSlider: UISlider!
-	
 	// Segmented Control
 	@IBOutlet weak var unitsSegmentedControl: UISegmentedControl!
 		
@@ -118,7 +116,8 @@ final class HomeViewController: UIViewController {
 		resultLabel.layer.cornerRadius = 10
 		staticSpeedLabel.text = "Vs = "
 		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
-		speedLabel.textColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
+		// speedLabel.textColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
+		speedLabel.textColor = .white
 		
 		// Segmented Controls
 		unitsSegmentedControl.removeAllSegments()
@@ -156,6 +155,11 @@ final class HomeViewController: UIViewController {
 		operatorSubstraction.round()
 		operatorAddition.round()
 		operatorResult.round()
+		operatorDivision.backgroundColor = operatorsColor
+		operatorMultiplication.backgroundColor = operatorsColor
+		operatorSubstraction.backgroundColor = operatorsColor
+		operatorAddition.backgroundColor = operatorsColor
+		operatorResult.backgroundColor = operatorsColor
 		
 		
 		

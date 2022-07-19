@@ -45,13 +45,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="gj8-FE-ie7">
-                    <rect key="frame" x="10" y="244.5" width="394" height="70"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="45" translatesAutoresizingMaskIntoConstraints="NO" id="gj8-FE-ie7">
+                    <rect key="frame" x="18" y="239.5" width="378" height="70"/>
                     <color key="backgroundColor" red="0.17723390459999999" green="0.17723390459999999" blue="0.17723390459999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="229-vI-biD"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="90"/>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="82"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -125,7 +125,7 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="÷">
                                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
-                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
                                         <action selector="operatorDivisionAction:" destination="-1" eventType="touchUpInside" id="Lsc-N4-XCn"/>
@@ -195,7 +195,7 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="×">
                                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
-                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
                                         <action selector="operatorMultiplicationAction:" destination="-1" eventType="touchUpInside" id="ViZ-pj-B3q"/>
@@ -265,7 +265,7 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="−">
                                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
-                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
                                         <action selector="operatorSubstractionAction:" destination="-1" eventType="touchUpInside" id="ZbN-Iv-o3r"/>
@@ -335,7 +335,7 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="+">
                                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
-                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
                                         <action selector="operatorAdditionAction:" destination="-1" eventType="touchUpInside" id="nAv-oh-fWn"/>
@@ -395,7 +395,7 @@
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="=">
                                                 <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
-                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </buttonConfiguration>
                                             <connections>
                                                 <action selector="operatorResultAction:" destination="-1" eventType="touchUpInside" id="dQ5-m6-ffe"/>
@@ -411,13 +411,13 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2p-Ig-Xmu">
-                    <rect key="frame" x="10" y="49" width="394" height="130"/>
+                    <rect key="frame" x="18" y="99.5" width="378" height="130"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="ycu-4A-8Hk">
-                            <rect key="frame" x="10" y="5" width="374" height="120"/>
+                            <rect key="frame" x="10" y="5" width="358" height="120"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.0 ºC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psp-kG-Uy6">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="358" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="KdK-4q-dkD"/>
                                     </constraints>
@@ -426,14 +426,14 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DIE-jQ-G3X">
-                                    <rect key="frame" x="-2" y="50" width="378" height="31"/>
+                                    <rect key="frame" x="-2" y="50" width="362" height="31"/>
                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     <connections>
                                         <action selector="tempSliderAction:" destination="-1" eventType="valueChanged" id="Tmd-p0-teB"/>
                                     </connections>
                                 </slider>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-Nr-SRA">
-                                    <rect key="frame" x="0.0" y="90" width="374" height="30"/>
+                                    <rect key="frame" x="0.0" y="90" width="358" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vs = " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-4f-9ve">
                                             <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
@@ -445,7 +445,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="m/s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjJ-kc-qMC">
-                                            <rect key="frame" x="38" y="0.0" width="336" height="30"/>
+                                            <rect key="frame" x="38" y="0.0" width="320" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="XcT-kd-pGR"/>
                                             </constraints>
@@ -476,19 +476,18 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.1184308156" green="0.11856249720000001" blue="0.12356481699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Q2p-Ig-Xmu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="5XF-5f-wV3"/>
-                <constraint firstItem="gj8-FE-ie7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="85u-Xr-rqF"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q2p-Ig-Xmu" secondAttribute="trailing" constant="10" id="IwV-ed-Aaa"/>
-                <constraint firstItem="gj8-FE-ie7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="R0x-lC-451"/>
+                <constraint firstItem="gj8-FE-ie7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="85u-Xr-rqF"/>
+                <constraint firstItem="gj8-FE-ie7" firstAttribute="top" secondItem="Q2p-Ig-Xmu" secondAttribute="bottom" constant="10" id="Fkb-q2-KA8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q2p-Ig-Xmu" secondAttribute="trailing" constant="18" id="IwV-ed-Aaa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZrM-jn-wap" secondAttribute="trailing" constant="80" id="VMx-0z-TQ9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HNx-68-2hI" secondAttribute="bottom" constant="18" id="XZT-SG-xdO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gj8-FE-ie7" secondAttribute="trailing" constant="10" id="a7f-iv-NpR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gj8-FE-ie7" secondAttribute="trailing" constant="18" id="a7f-iv-NpR"/>
                 <constraint firstItem="ZrM-jn-wap" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="80" id="aPE-mG-d4l"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HNx-68-2hI" secondAttribute="trailing" priority="900" constant="18" id="bbi-Xt-cX4"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eG9-Va-vqU"/>
-                <constraint firstItem="Q2p-Ig-Xmu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="iIk-OV-PdL"/>
+                <constraint firstItem="Q2p-Ig-Xmu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="iIk-OV-PdL"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" priority="900" constant="18" id="ipw-zb-MjM"/>
-                <constraint firstItem="ZrM-jn-wap" firstAttribute="top" secondItem="gj8-FE-ie7" secondAttribute="bottom" constant="5" id="nnd-4h-7eh"/>
+                <constraint firstItem="ZrM-jn-wap" firstAttribute="top" secondItem="gj8-FE-ie7" secondAttribute="bottom" constant="10" id="nnd-4h-7eh"/>
                 <constraint firstItem="Q2p-Ig-Xmu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="s1O-al-Rd3"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="ZrM-jn-wap" secondAttribute="bottom" constant="20" id="wGl-hE-wTt"/>
             </constraints>
