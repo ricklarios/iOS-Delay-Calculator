@@ -20,6 +20,8 @@ final class HomeViewController: UIViewController {
 	@IBOutlet weak var staticSpeedLabel: UILabel!
 	@IBOutlet weak var speedLabel: UILabel!
 	
+	// View
+	@IBOutlet weak var selectTempView: UIView!
 	// Slider
 	@IBOutlet weak var temperatureSlider: UISlider!
 	
@@ -101,6 +103,9 @@ final class HomeViewController: UIViewController {
 		super.viewDidAppear(animated)
 		
 		// UI
+		
+		// View
+		selectTempView.layer.cornerRadius = 10
 		
 		// Slider
 		temperatureSlider.minimumValue = -55
