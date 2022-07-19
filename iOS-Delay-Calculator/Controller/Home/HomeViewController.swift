@@ -297,7 +297,7 @@ final class HomeViewController: UIViewController {
 			return
 		}
 		
-		if operation != .none {
+		if operation != .none && currentTemp == "0" {
 			resultLabel.text = "0" + kDecimalSeparator
 			decimal = true
 			sender.shine()
