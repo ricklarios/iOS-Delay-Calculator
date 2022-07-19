@@ -45,18 +45,21 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="45" translatesAutoresizingMaskIntoConstraints="NO" id="gj8-FE-ie7">
-                    <rect key="frame" x="18" y="239.5" width="378" height="70"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="45" translatesAutoresizingMaskIntoConstraints="NO" id="gj8-FE-ie7">
+                    <rect key="frame" x="18" y="211.5" width="378" height="98"/>
                     <color key="backgroundColor" red="0.17723390459999999" green="0.17723390459999999" blue="0.17723390459999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="229-vI-biD"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="229-vI-biD"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="82"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZrM-jn-wap">
+                <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZrM-jn-wap">
                     <rect key="frame" x="80" y="319.5" width="254" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="eKv-l9-P6z"/>
+                    </constraints>
                     <segments>
                         <segment title="First"/>
                         <segment title="Second"/>
@@ -65,7 +68,7 @@
                         <action selector="segmentedControlAction:" destination="-1" eventType="valueChanged" id="AhR-Sr-yea"/>
                     </connections>
                 </segmentedControl>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HNx-68-2hI">
+                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HNx-68-2hI">
                     <rect key="frame" x="18" y="370.5" width="378" height="473.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i3s-0A-8nX">
@@ -79,7 +82,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="AC">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="35"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -94,7 +97,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="⁺∕₋">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="35"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -109,7 +112,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="m⇔s">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="23"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="29"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -124,7 +127,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="÷">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -149,7 +152,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="7">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="41"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -164,7 +167,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="8">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -179,7 +182,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="9">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -194,7 +197,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="×">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -219,7 +222,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="4">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -234,7 +237,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="5">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -249,7 +252,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="6">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -264,7 +267,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="−">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -289,7 +292,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="1">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -304,7 +307,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="2">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -319,7 +322,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="3">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -334,7 +337,7 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="+">
-                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
                                     <connections>
@@ -359,7 +362,7 @@
                                             <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="0">
-                                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </buttonConfiguration>
                                             <connections>
@@ -379,7 +382,7 @@
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title=",">
-                                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="41"/>
+                                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </buttonConfiguration>
                                             <connections>
@@ -394,7 +397,7 @@
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="=">
-                                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="40"/>
+                                                <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="48"/>
                                                 <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </buttonConfiguration>
                                             <connections>
@@ -410,30 +413,30 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2p-Ig-Xmu">
-                    <rect key="frame" x="18" y="99.5" width="378" height="130"/>
+                <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Q2p-Ig-Xmu">
+                    <rect key="frame" x="18" y="85.5" width="378" height="116"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="ycu-4A-8Hk">
-                            <rect key="frame" x="10" y="5" width="358" height="120"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ycu-4A-8Hk">
+                            <rect key="frame" x="10" y="5" width="358" height="106"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.0 ºC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psp-kG-Uy6">
-                                    <rect key="frame" x="0.0" y="0.0" width="358" height="50"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="20.0 ºC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psp-kG-Uy6">
+                                    <rect key="frame" x="0.0" y="0.0" width="358" height="36"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="KdK-4q-dkD"/>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="KdK-4q-dkD"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DIE-jQ-G3X">
-                                    <rect key="frame" x="-2" y="50" width="362" height="31"/>
+                                    <rect key="frame" x="-2" y="41" width="362" height="31"/>
                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     <connections>
                                         <action selector="tempSliderAction:" destination="-1" eventType="valueChanged" id="Tmd-p0-teB"/>
                                     </connections>
                                 </slider>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9I-Nr-SRA">
-                                    <rect key="frame" x="0.0" y="90" width="358" height="30"/>
+                                    <rect key="frame" x="0.0" y="76" width="358" height="30"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vs = " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-4f-9ve">
                                             <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
@@ -444,10 +447,10 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="m/s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjJ-kc-qMC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="m/s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjJ-kc-qMC">
                                             <rect key="frame" x="38" y="0.0" width="320" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="XcT-kd-pGR"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="XcT-kd-pGR"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -490,8 +493,9 @@
                 <constraint firstItem="ZrM-jn-wap" firstAttribute="top" secondItem="gj8-FE-ie7" secondAttribute="bottom" constant="10" id="nnd-4h-7eh"/>
                 <constraint firstItem="Q2p-Ig-Xmu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="s1O-al-Rd3"/>
                 <constraint firstItem="HNx-68-2hI" firstAttribute="top" secondItem="ZrM-jn-wap" secondAttribute="bottom" constant="20" id="wGl-hE-wTt"/>
+                <constraint firstItem="Q2p-Ig-Xmu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="zmu-pd-r95"/>
             </constraints>
-            <point key="canvasLocation" x="168" y="131"/>
+            <point key="canvasLocation" x="166.66666666666669" y="130.58035714285714"/>
         </view>
     </objects>
     <resources>
