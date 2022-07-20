@@ -19,8 +19,9 @@ final class HomeViewController: UIViewController {
 	// Speed of Sound Label
 	@IBOutlet weak var staticSpeedLabel: UILabel!
 	@IBOutlet weak var speedLabel: UILabel!
-	// View
+	// Views
 	@IBOutlet weak var selectTempView: UIView!
+	@IBOutlet weak var resultView: UIView!
 	// Slider
 	@IBOutlet weak var temperatureSlider: UISlider!
 	// Segmented Control
@@ -112,8 +113,8 @@ final class HomeViewController: UIViewController {
 		temperatureSlider.minimumTrackTintColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
 		
 		// Labels
-		resultLabel.layer.masksToBounds = true
-		resultLabel.layer.cornerRadius = 10
+		resultView.layer.masksToBounds = true
+		resultView.layer.cornerRadius = 10
 		staticSpeedLabel.text = "Vs = "
 		speedLabel.text = "\(round(speedOfSound * 100) / 100) m/s"
 		// speedLabel.textColor = UIColor.SetVariableColor(r: currentSliderRColor, g: 0, b: 167, alpha: 1)
@@ -273,6 +274,7 @@ final class HomeViewController: UIViewController {
 			result()
 		} else if total != 0 {
 			tempValue = total
+			
 		}
 		
 		operating = true
@@ -297,7 +299,7 @@ final class HomeViewController: UIViewController {
 			return
 		}
 		
-		if operation != .none && currentTemp == "0" {
+		if operation != .none && inputValue == 0 {
 			resultLabel.text = "0" + kDecimalSeparator
 			decimal = true
 			sender.shine()
