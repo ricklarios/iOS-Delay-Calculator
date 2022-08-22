@@ -14,9 +14,12 @@ public func TempColorValue (selectedTemp: Double) -> Int {
 	return ColorValue
 }
 
+// Operators button custom color
+public let operatorsColor: UIColor = UIColor(red: 212/255, green: 216/255, blue: 55/255, alpha: 1)
+
 // Colores para meters/seconds
-public let metersColor: UIColor = UIColor(red: 0/255, green: 80/255, blue: 255/255, alpha: 0.8)
-public let secondsColor: UIColor = UIColor(red: 46/255, green: 186/255, blue: 80/255, alpha: 0.8)
+public let metersColor: UIColor = UIColor(red: 97/255, green:164/255, blue: 211/255, alpha: 1)
+public let secondsColor: UIColor = UIColor(red: 254/255, green: 148/255, blue: 1/255, alpha: 0.8)
 
 
 
