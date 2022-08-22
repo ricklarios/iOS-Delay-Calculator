@@ -242,8 +242,6 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-		} else if total != 0 {
-			tempValue = total
 		}
 		
 		operating = true
@@ -258,8 +256,6 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-		} else if total != 0 {
-			tempValue = total
 		}
 		
 		operating = true
@@ -274,8 +270,6 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-		} else if total != 0 {
-			tempValue = total
 		}
 		
 		operating = true
@@ -290,8 +284,6 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-			
-			
 		}
 		
 		operating = true
