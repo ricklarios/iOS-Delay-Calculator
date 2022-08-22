@@ -340,6 +340,11 @@ final class HomeViewController: UIViewController {
 			operating = false
 		}
 		
+		if operation == .none && inputValue == 0  {
+			tempValue = 0
+			printableTemp = ""
+		}
+		
 		// Si hemos seleccionado decimal
 		if decimal {
 			printableTemp = "\(currentTemp)\(kDecimalSeparator)"
@@ -400,6 +405,7 @@ final class HomeViewController: UIViewController {
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 				
 		operation = .none
+		inputValue = 0
 		
 		// Para guardar el resultado en memoria
 		UserDefaults.standard.set(total, forKey: kTotal)
