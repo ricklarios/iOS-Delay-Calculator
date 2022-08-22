@@ -290,8 +290,7 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-		} else if total != 0 {
-			tempValue = total
+			
 			
 		}
 		
@@ -332,30 +331,41 @@ final class HomeViewController: UIViewController {
 	@IBAction func numberAction(_ sender: UIButton) {
 				
 		operatorAC.setTitle("C", for: .normal)
-		var currentTemp = rawFormatter.string(from: NSNumber(value: inputValue))!
+		// Comprobamos q no haya más de 9 dígitos
+		let currentTemp = rawFormatter.string(from: NSNumber(value: inputValue))!
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
-		currentTemp = auxFormatter.string(from: NSNumber(value: inputValue))!
+		
+		var printableTemp = resultLabel.text == "0" ? "" : resultLabel.text
+		print(printableTemp!)
 		
 		// Si hemos seleccionado una operación
 		if operating {
-			tempValue = tempValue == 0 ? inputValue : tempValue
+			tempValue = tempValue == 0 ? inputValue : total
 			resultLabel.text = ""
-			currentTemp = ""
+			printableTemp = ""
 			operating = false
 		}
 		
 		// Si hemos seleccionado decimal
 		if decimal {
-				currentTemp = "\(currentTemp)."
+			printableTemp = "\(currentTemp)\(kDecimalSeparator)"
 				decimal = false
 		}
 		
 		// Por defecto
 		let number = sender.tag
-		inputValue = Double(currentTemp + String(number))!
-		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
+//		if number == 0 && printableTemp.contains(kDecimalSeparator) {
+//			printableTemp += String(number)
+//			resultLabel.text = printableTemp
+//			sender.shine()
+//			return
+//		}
+		printableTemp! += String(number)
+		resultLabel.text = printableTemp
+//		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
+		inputValue = Double(printableTemp!)!
 		sender.shine()
 	}
 	
@@ -425,13 +435,14 @@ final class HomeViewController: UIViewController {
 	
 	private func convertUnits() {
 		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
-		if total != 0 { inputValue = total }
-		
+//		if total != 0 { inputValue = total }
+		inputValue = total == 0 ? inputValue : total
 		switch mainUnit {
 			
 			// Pasamos a SECONDS
 			case .meters:
-				total = inputValue / speedOfSound
+				tempValue = tempValue / speedOfSound
+				inputValue = inputValue / speedOfSound
 				if #available(iOS 13.0, *) {
 					unitsSegmentedControl.selectedSegmentTintColor = secondsColor
 				}
@@ -439,13 +450,14 @@ final class HomeViewController: UIViewController {
 			
 			// Pasamos a METERS
 			case .seconds:
-				total = inputValue * speedOfSound
+				tempValue = tempValue * speedOfSound
+				inputValue = inputValue * speedOfSound
 				if #available(iOS 13.0, *) {
 					unitsSegmentedControl.selectedSegmentTintColor = metersColor
 				}
 				break
 		}
-		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
+		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 				
 		switchMainUnit()
 		unitsSegmentedControl.selectedSegmentIndex = unitsSGArray.firstIndex(of: mainUnit.rawValue) ?? 0
