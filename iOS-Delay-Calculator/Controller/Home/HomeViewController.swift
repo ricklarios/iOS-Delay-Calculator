@@ -384,8 +384,6 @@ final class HomeViewController: UIViewController {
 			inputValue = 0
 			resultLabel.text = "0"
 		} else {
-			inputValue = 0
-			tempValue = 0
 			total = 0
 			result()
 		}
@@ -420,6 +418,7 @@ final class HomeViewController: UIViewController {
 		operation = .none
 		operating = false
 		inputValue = 0
+		tempValue = total
 		
 		// Para guardar el resultado en memoria
 		UserDefaults.standard.set(total, forKey: kTotal)
@@ -444,14 +443,16 @@ final class HomeViewController: UIViewController {
 	
 	private func convertUnits() {
 		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
-//		if total != 0 { inputValue = total }
-		inputValue = total == 0 ? inputValue : total
+
+		inputValue = total != 0 ? total : inputValue
+		
 		switch mainUnit {
 			
 			// Pasamos a SECONDS
 			case .meters:
 				tempValue = tempValue / speedOfSound
 				inputValue = inputValue / speedOfSound
+				total = total / speedOfSound
 				if #available(iOS 13.0, *) {
 					unitsSegmentedControl.selectedSegmentTintColor = secondsColor
 				}
@@ -461,11 +462,15 @@ final class HomeViewController: UIViewController {
 			case .seconds:
 				tempValue = tempValue * speedOfSound
 				inputValue = inputValue * speedOfSound
+				total = total * speedOfSound
 				if #available(iOS 13.0, *) {
 					unitsSegmentedControl.selectedSegmentTintColor = metersColor
 				}
 				break
 		}
+		print("input: \(inputValue)")
+		print("temp: \(tempValue)")
+		print("TOTAL: \(total)")
 		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 				
 		switchMainUnit()
