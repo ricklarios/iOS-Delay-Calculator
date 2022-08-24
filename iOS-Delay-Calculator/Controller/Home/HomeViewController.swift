@@ -304,10 +304,19 @@ final class HomeViewController: UIViewController {
 	@IBAction func numberDecimalAction(_ sender: UIButton) {
 		
 		let currentTemp = rawFormatter.string(from: NSNumber(value: inputValue))!
-		if resultLabel.text?.contains(kDecimalSeparator) ?? false || (!operating && currentTemp.count >= kMaxLength) {
+		if decimal || (!operating && currentTemp.count >= kMaxLength) {
 			return
 		}
 		
+		// Si hemos seleccionado una operación limpiamos pantalla y almacenamos el valor anterior
+		if operating {
+			tempValue = tempValue == 0 ? inputValue : total
+			inputValue = 0
+			resultLabel.text = ""
+			operating = false
+		}
+		
+		// Si estamos operando
 		if operation != .none && inputValue == 0 {
 			resultLabel.text = "0" + kDecimalSeparator
 			decimal = true
@@ -328,7 +337,7 @@ final class HomeViewController: UIViewController {
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
-		
+		// Asignamos un valor por defecto para mostrar en pantalla
 		var printableTemp = resultLabel.text == "0" ? "" :
 		resultLabel.text
 		print(printableTemp!)
@@ -355,8 +364,6 @@ final class HomeViewController: UIViewController {
 			if inputValue == 0 {
 			printableTemp! = "0."
 			}
-			
-			decimal = false
 		}
 		
 		// Por defecto
@@ -403,19 +410,21 @@ final class HomeViewController: UIViewController {
 			break
 		}
 		
+		print("input: \(inputValue)")
+		print("temp: \(tempValue)")
+		print("TOTAL: \(total)")
+		
 		// Formateo en pantalla
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 				
 		operation = .none
+		operating = false
 		inputValue = 0
 		
 		// Para guardar el resultado en memoria
 		UserDefaults.standard.set(total, forKey: kTotal)
 		
-		print("input: \(inputValue)")
-		print("temp: \(tempValue)")
-		print("TOTAL: \(total)")
-		inputValue = 0
+		
 		
 		
 	}
