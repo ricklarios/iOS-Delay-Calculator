@@ -329,10 +329,14 @@ final class HomeViewController: UIViewController {
 			return
 		}
 		
-		var printableTemp = resultLabel.text == "0" ? "" : resultLabel.text
+		var printableTemp = resultLabel.text == "0" ? "" :
+		resultLabel.text
 		print(printableTemp!)
 		
-		// Si hemos seleccionado una operación
+		// Recpgemos el numero pulsado
+		let number = sender.tag
+		
+		// Si hemos seleccionado una operación limpiamos pantalla y almacenamos el valor anterior
 		if operating {
 			tempValue = tempValue == 0 ? inputValue : total
 			resultLabel.text = ""
@@ -340,6 +344,7 @@ final class HomeViewController: UIViewController {
 			operating = false
 		}
 		
+		// Si no hay operación limpiamos pantalla
 		if operation == .none && inputValue == 0  {
 			tempValue = 0
 			printableTemp = ""
@@ -347,22 +352,19 @@ final class HomeViewController: UIViewController {
 		
 		// Si hemos seleccionado decimal
 		if decimal {
-			printableTemp = "\(currentTemp)\(kDecimalSeparator)"
-				decimal = false
+			if inputValue == 0 {
+			printableTemp! = "0."
+			}
+			
+			decimal = false
 		}
 		
 		// Por defecto
-		let number = sender.tag
-//		if number == 0 && printableTemp.contains(kDecimalSeparator) {
-//			printableTemp += String(number)
-//			resultLabel.text = printableTemp
-//			sender.shine()
-//			return
-//		}
-		printableTemp! += String(number)
-		resultLabel.text = printableTemp
-//		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
+		printableTemp = printableTemp! + String(number)
+		print(printableTemp!)
 		inputValue = Double(printableTemp!)!
+		print(inputValue)
+		resultLabel.text = printableTemp
 		sender.shine()
 	}
 	
