@@ -339,7 +339,7 @@ final class HomeViewController: UIViewController {
 		}
 		// Asignamos un valor por defecto para mostrar en pantalla
 		var printableTemp = resultLabel.text == "0" ? "" :
-		resultLabel.text
+		resultLabel.text?.replacingOccurrences(of: kDecimalSeparator , with: ".")
 		print(printableTemp!)
 		
 		// Recpgemos el numero pulsado
@@ -371,7 +371,7 @@ final class HomeViewController: UIViewController {
 		print(printableTemp!)
 		inputValue = Double(printableTemp!)!
 		print(inputValue)
-		resultLabel.text = printableTemp
+		resultLabel.text = printableTemp?.replacingOccurrences(of: ".", with: kDecimalSeparator)
 		sender.shine()
 	}
 	
