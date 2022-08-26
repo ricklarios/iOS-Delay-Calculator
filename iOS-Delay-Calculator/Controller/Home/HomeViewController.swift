@@ -354,7 +354,7 @@ final class HomeViewController: UIViewController {
 		}
 		
 		// Si no hay operación limpiamos pantalla
-		if operation == .none && inputValue == 0  {
+		if operation == .none && inputValue == 0 && !(printableTemp!.contains("0.")) {
 			tempValue = 0
 			printableTemp = ""
 		}
@@ -364,13 +364,14 @@ final class HomeViewController: UIViewController {
 			if inputValue == 0 {
 			printableTemp! = "0."
 			}
+			decimal = false
 		}
 		
 		// Por defecto
 		printableTemp = printableTemp! + String(number)
-		print(printableTemp!)
+		print("printableTemp: \(printableTemp!)")
 		inputValue = Double(printableTemp!)!
-		print(inputValue)
+		print("inputValue: \(inputValue)")
 		resultLabel.text = printableTemp?.replacingOccurrences(of: ".", with: kDecimalSeparator)
 		sender.shine()
 	}
@@ -378,6 +379,7 @@ final class HomeViewController: UIViewController {
 	// Limpia los valores
 	private func clear() {
 		operation = .none
+		operating = false
 		decimal = false
 		operatorAC.setTitle("AC", for: .normal)
 		if inputValue != 0 {
