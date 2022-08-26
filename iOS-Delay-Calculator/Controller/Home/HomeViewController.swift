@@ -242,8 +242,6 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-		} else if total != 0 {
-			tempValue = total
 		}
 		
 		operating = true
@@ -258,8 +256,6 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-		} else if total != 0 {
-			tempValue = total
 		}
 		
 		operating = true
@@ -274,8 +270,6 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-		} else if total != 0 {
-			tempValue = total
 		}
 		
 		operating = true
@@ -290,8 +284,6 @@ final class HomeViewController: UIViewController {
 		
 		if operation != .none  {
 			result()
-			
-			
 		}
 		
 		operating = true
@@ -312,10 +304,19 @@ final class HomeViewController: UIViewController {
 	@IBAction func numberDecimalAction(_ sender: UIButton) {
 		
 		let currentTemp = rawFormatter.string(from: NSNumber(value: inputValue))!
-		if resultLabel.text?.contains(kDecimalSeparator) ?? false || (!operating && currentTemp.count >= kMaxLength) {
+		if decimal || (!operating && currentTemp.count >= kMaxLength) {
 			return
 		}
 		
+		// Si hemos seleccionado una operación limpiamos pantalla y almacenamos el valor anterior
+		if operating {
+			tempValue = tempValue == 0 ? inputValue : total
+			inputValue = 0
+			resultLabel.text = ""
+			operating = false
+		}
+		
+		// Si estamos operando
 		if operation != .none && inputValue == 0 {
 			resultLabel.text = "0" + kDecimalSeparator
 			decimal = true
@@ -336,11 +337,15 @@ final class HomeViewController: UIViewController {
 		if !operating && currentTemp.count >= kMaxLength {
 			return
 		}
-		
-		var printableTemp = resultLabel.text == "0" ? "" : resultLabel.text
+		// Asignamos un valor por defecto para mostrar en pantalla
+		var printableTemp = resultLabel.text == "0" ? "" :
+		resultLabel.text?.replacingOccurrences(of: kDecimalSeparator , with: ".")
 		print(printableTemp!)
 		
-		// Si hemos seleccionado una operación
+		// Recpgemos el numero pulsado
+		let number = sender.tag
+		
+		// Si hemos seleccionado una operación limpiamos pantalla y almacenamos el valor anterior
 		if operating {
 			tempValue = tempValue == 0 ? inputValue : total
 			resultLabel.text = ""
@@ -348,38 +353,39 @@ final class HomeViewController: UIViewController {
 			operating = false
 		}
 		
+		// Si no hay operación limpiamos pantalla
+		if operation == .none && inputValue == 0 && !(printableTemp!.contains("0.")) {
+			tempValue = 0
+			printableTemp = ""
+		}
+		
 		// Si hemos seleccionado decimal
 		if decimal {
-			printableTemp = "\(currentTemp)\(kDecimalSeparator)"
-				decimal = false
+			if inputValue == 0 {
+			printableTemp! = "0."
+			}
+			decimal = false
 		}
 		
 		// Por defecto
-		let number = sender.tag
-//		if number == 0 && printableTemp.contains(kDecimalSeparator) {
-//			printableTemp += String(number)
-//			resultLabel.text = printableTemp
-//			sender.shine()
-//			return
-//		}
-		printableTemp! += String(number)
-		resultLabel.text = printableTemp
-//		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
+		printableTemp = printableTemp! + String(number)
+		print("printableTemp: \(printableTemp!)")
 		inputValue = Double(printableTemp!)!
+		print("inputValue: \(inputValue)")
+		resultLabel.text = printableTemp?.replacingOccurrences(of: ".", with: kDecimalSeparator)
 		sender.shine()
 	}
 	
 	// Limpia los valores
 	private func clear() {
 		operation = .none
+		operating = false
 		decimal = false
 		operatorAC.setTitle("AC", for: .normal)
 		if inputValue != 0 {
 			inputValue = 0
 			resultLabel.text = "0"
 		} else {
-			inputValue = 0
-			tempValue = 0
 			total = 0
 			result()
 		}
@@ -404,18 +410,22 @@ final class HomeViewController: UIViewController {
 			break
 		}
 		
+		print("input: \(inputValue)")
+		print("temp: \(tempValue)")
+		print("TOTAL: \(total)")
+		
 		// Formateo en pantalla
 		resultLabel.text = printFormatter.string(from: NSNumber(value: total))
 				
 		operation = .none
+		operating = false
+		inputValue = 0
+		tempValue = total
 		
 		// Para guardar el resultado en memoria
 		UserDefaults.standard.set(total, forKey: kTotal)
 		
-		print("input: \(inputValue)")
-		print("temp: \(tempValue)")
-		print("TOTAL: \(total)")
-		inputValue = 0
+		
 		
 		
 	}
@@ -435,14 +445,16 @@ final class HomeViewController: UIViewController {
 	
 	private func convertUnits() {
 		speedOfSound = SpeedOfSound(selectedTemp: selectedTemp)
-//		if total != 0 { inputValue = total }
-		inputValue = total == 0 ? inputValue : total
+
+		inputValue = total != 0 ? total : inputValue
+		
 		switch mainUnit {
 			
 			// Pasamos a SECONDS
 			case .meters:
 				tempValue = tempValue / speedOfSound
 				inputValue = inputValue / speedOfSound
+				total = total / speedOfSound
 				if #available(iOS 13.0, *) {
 					unitsSegmentedControl.selectedSegmentTintColor = secondsColor
 				}
@@ -452,11 +464,15 @@ final class HomeViewController: UIViewController {
 			case .seconds:
 				tempValue = tempValue * speedOfSound
 				inputValue = inputValue * speedOfSound
+				total = total * speedOfSound
 				if #available(iOS 13.0, *) {
 					unitsSegmentedControl.selectedSegmentTintColor = metersColor
 				}
 				break
 		}
+		print("input: \(inputValue)")
+		print("temp: \(tempValue)")
+		print("TOTAL: \(total)")
 		resultLabel.text = printFormatter.string(from: NSNumber(value: inputValue))
 				
 		switchMainUnit()
